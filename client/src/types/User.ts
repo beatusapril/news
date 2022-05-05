@@ -4,7 +4,7 @@ export enum Role {
     admin = "admin"
 }
 
-export interface User {
+/* export interface User {
     firstName: string,
     lastName: string,
     phone: string,
@@ -14,7 +14,7 @@ export interface User {
     showPhone: boolean
     role: Role,
     login: string
-}
+} */
 
 export interface UserRequest{
     login: string | null,
@@ -22,6 +22,22 @@ export interface UserRequest{
 
 }
 
-export interface UserResponse{
-    token: string | null
+export interface LoginResponse{
+    token: string
 }
+
+export interface UserInfo{
+    tags: string[];
+    firstName: string,
+    lastName: string,
+    phone: string,
+    showFirstName: true,
+    showLastName: true,
+    showPhone: true,
+    role: number
+}
+
+export interface UserResponse{
+    me: UserInfo
+}
+

@@ -1,5 +1,5 @@
-import { User } from "../types/User";
+import { UserInfo } from "../types/User";
 
 export interface Store {
-    user: User | null;
+    user: UserInfo | null;
 }

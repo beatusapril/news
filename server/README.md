@@ -7,3 +7,5 @@ npm run dev:start
 
 ###Express documentation
 https://expressjs.com
+
+http://localhost:3000/api-docs/

@@ -1,12 +1,10 @@
 import { Field, useFormik, FormikProvider } from 'formik';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { login } from '../../store/login/actionLogin';
+import { signUp } from '../../store/signup/actionSignup';
 import { UserRequest } from '../../types/User';
 
-
-export function Login() {
+export function SignUp() {
     const [formValues, setFormValues] = useState<UserRequest>({ login: '', password: '' });
     const dispatch = useDispatch();
 
@@ -27,11 +25,11 @@ export function Login() {
 
     function onSubmit(values: UserRequest) {
         setFormValues(values);
-        dispatch(login({password: values.password, login: values.login}))
+        dispatch(signUp({ password: formValues.password, login: formValues.login }))
     };
 
     return <>
-        News
+        Sign Up
         <FormikProvider value={formik}>
             <form onSubmit={formik.handleSubmit} >
                 <div className="text-field">
@@ -47,9 +45,8 @@ export function Login() {
                         onChange={formik.handleChange} value={formik.values.password} name="password" id="password" onBlur={formik.handleBlur}></Field>
                     {formik.errors.password && formik.touched.password && <div className="text-field__message">{formik.errors.password}</div>}
                 </div>
-                <button type="submit" disabled={!(formik.isValid)}>Submit</button>
+                <button type="submit" disabled={!(formik.isValid)}>Sign up</button>
             </form>
         </FormikProvider>
-        Not Register?<Link to="/signup" >Register</Link>
     </>
 }

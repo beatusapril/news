@@ -5,6 +5,7 @@ import news from './controllers/news.controller'
 import user from './controllers/user.controller'
 import admin from './controllers/admin.controller'
 const app = express()
+const cors = require('cors');
 const jsonParser = bodyParser.json()
 import Storage from './services/storage'
 import swaggerUi from 'swagger-ui-express'
@@ -13,6 +14,8 @@ import {swaggerDocument} from './swagger'
 const port = 3000
 
 Storage.init()
+
+app.use(cors({origin: '*'}));
 
 app.get('/', (req, res) => {
   res.send('Hello World!')

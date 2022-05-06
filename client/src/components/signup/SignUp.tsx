@@ -1,11 +1,15 @@
 import { Field, useFormik, FormikProvider } from 'formik';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Navigate } from 'react-router';
+import { getUser } from '../../selectors/User';
 import { signUp } from '../../store/signup/actionSignup';
+import { Store } from '../../store/Types';
 import { UserRequest } from '../../types/User';
 
 export function SignUp() {
     const [formValues, setFormValues] = useState<UserRequest>({ login: '', password: '' });
+    const user = useSelector<Store>(state => getUser(state));
     const dispatch = useDispatch();
 
     const validate = (values: UserRequest) => {
@@ -25,8 +29,12 @@ export function SignUp() {
 
     function onSubmit(values: UserRequest) {
         setFormValues(values);
-        dispatch(signUp({ password: formValues.password, login: formValues.login }))
+        dispatch(signUp({ password: values.password, login: values.login }))
     };
+
+    if (user) {
+        return <Navigate to="/" />
+    }
 
     return <>
         Sign Up

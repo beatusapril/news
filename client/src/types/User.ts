@@ -27,6 +27,7 @@ export interface LoginResponse{
 }
 
 export interface UserInfo{
+    id: number,
     tags: string[];
     firstName: string,
     lastName: string,
@@ -34,7 +35,8 @@ export interface UserInfo{
     showFirstName: true,
     showLastName: true,
     showPhone: true,
-    role: number
+    role: number,
+    login: string
 }
 
 export interface UserResponse{

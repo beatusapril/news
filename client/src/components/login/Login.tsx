@@ -1,13 +1,16 @@
 import { Field, useFormik, FormikProvider } from 'formik';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, Navigate } from 'react-router-dom';
+import { getUser } from '../../selectors/User';
 import { login } from '../../store/login/actionLogin';
+import { Store } from '../../store/Types';
 import { UserRequest } from '../../types/User';
 
 
 export function Login() {
     const [formValues, setFormValues] = useState<UserRequest>({ login: '', password: '' });
+    const user = useSelector<Store>(state => getUser(state));
     const dispatch = useDispatch();
 
     const validate = (values: UserRequest) => {
@@ -27,8 +30,12 @@ export function Login() {
 
     function onSubmit(values: UserRequest) {
         setFormValues(values);
-        dispatch(login({password: values.password, login: values.login}))
+        dispatch(login({ password: values.password, login: values.login }))
     };
+
+    if (user) {
+        return <Navigate to="/" />
+    }
 
     return <>
         News

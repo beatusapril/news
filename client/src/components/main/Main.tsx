@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router";
-import { getUser } from "../../selectors/User";
+import { getUser } from "../../selectors/selectors";
 import { Store } from "../../store/Types";
 import { Login } from "../login/Login";
 import { Link, Navigate } from 'react-router-dom'

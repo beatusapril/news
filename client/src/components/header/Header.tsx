@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
 import { ADMIN } from "../../consts/consts";
-import { getUser } from "../../selectors/User";
+import { getUser } from "../../selectors/selectors";
 import { fetchMeAction, logout } from "../../store/login/actionLogin";
 import { Store } from "../../store/Types";
 import { UserInfo } from "../../types/User";
@@ -17,13 +17,13 @@ export function Header() {
         dispatch(logout());
     }
 
-    if (!user){
+    if (!user && !localStorage.getItem("auth")){
         return <Navigate to="/"/>
     }
     return <div>
         {user && <><ul>
             {user.role === ADMIN && <li><Link to="/users">Users</Link></li>}
-            {user.role === ADMIN && <li>Tags</li>}
+            {user.role === ADMIN && <li><Link to="/tags">Tags</Link></li>}
             <li>News</li>
         </ul>
             <button onClick={logoutHandler}>Logout</button></>}

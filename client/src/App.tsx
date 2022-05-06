@@ -6,13 +6,14 @@ import { Navigate, Route, Routes } from 'react-router';
 import { SignUp } from './components/signup/SignUp';
 import { Login } from './components/login/Login';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser } from './selectors/User';
+import { getUser } from './selectors/selectors';
 import { Store } from './store/Types';
 import { logout } from './store/login/actionLogin';
 import { ADMIN } from './consts/consts';
 import { UserInfo, UserResponse } from './types/User';
 import { Link } from 'react-router-dom';
 import { Users } from './components/users/Users';
+import { Tags } from './components/tags/Tags';
 
 function App() {
   const user = useSelector<Store, UserInfo | null>(state => getUser(state));
@@ -24,6 +25,7 @@ function App() {
           <Route path='/login' element={user ? <Navigate to="/" /> : <Login />}></Route>
           <Route path='/signup' element={user ? <Navigate to="/" /> : <SignUp />}></Route>
           <Route path='/users' element={<Users />}></Route>
+          <Route path='/tags' element={<Tags />}></Route>
         </Routes>
       </React.Fragment>
     </>

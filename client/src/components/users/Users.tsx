@@ -1,7 +1,7 @@
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers } from "../../selectors/User";
+import { getUsers } from "../../selectors/selectors";
 import { fetchMeAction } from "../../store/login/actionLogin";
 import { Store } from "../../store/Types";
 import { fetchUsersAction } from "../../store/users/usersAction";

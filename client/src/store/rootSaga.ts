@@ -1,6 +1,7 @@
 import { all} from 'redux-saga/effects'
 import { watcherFetchMe, watcherLogin, watcherLogout } from './login/loginSaga'
 import { watcherSignUp } from './signup/signUpSaga'
+import { watcherSaveTags, watcherTags } from './tags/TagsSaga'
 import { watcherEditRole, watcherUsers } from './users/usersSaga'
 
 export default function* rootSaga() {
@@ -10,6 +11,8 @@ export default function* rootSaga() {
         watcherSignUp(),
         watcherUsers(),
         watcherEditRole(),
-        watcherFetchMe()
+        watcherFetchMe(),
+        watcherSaveTags(),
+        watcherTags()
     ])
 }

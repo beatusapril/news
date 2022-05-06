@@ -36,9 +36,15 @@ router.post<{}, any, any, {ids: string}>('/read', (req, res) => {
 
 
 router.get<GetNewsRequest>('/', (req, res) => {
+  console.log(req.query);
   const token = req.header('token')
   const authData = AuthService.checkAuthorized(token)
-  const params = req.params
+  const params = {tags: (req.query.tags as string[]), onlyNew: Boolean(req.query.onlyNew as string), 
+    author: +(req.query.author as string), 
+    header: req.query.header as string,
+    offset: +(req.query.offset as string),
+    limit: +(req.query.limit as string),
+    field: 'header' as 'header'| 'publicationDate', order: 'asc' as 'asc' | 'desc'};
   const news = NewsService.getNewsFilteredPaginated(params, authData)
   res.status(200).json({news})
 })

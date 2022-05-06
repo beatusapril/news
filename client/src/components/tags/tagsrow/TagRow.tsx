@@ -12,7 +12,11 @@ export function TagRow(props: TagProps) {
         props.onUpdate(props.name, ev.target.value);
     }
 
+    function onDelete() {
+        props.onDelete(props.name);
+    }
+
     return <div>{isEdit && <input value={props.name} onChange={ev => onUpdateTag(ev)} />}
         {!isEdit && <span onClick={onClick}>{props.name}
-        </span>}</div>
+        </span>}<button onClick={onDelete}>Delete</button></div>
 }

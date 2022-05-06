@@ -16,7 +16,7 @@ export function Tags() {
     }, []);
 
     function onUpdateTag(name: string, newName: string) {
-        const newTags = [...tags.filter(tag => tag !== name)]
+        const newTags = [...tags.filter(tag => tag !== name)];
         newTags.push(newName);
         dispatch(tagsUpdateAction(newTags));
     }
@@ -29,10 +29,15 @@ export function Tags() {
         dispatch(tagsSaveAction(tags));
     }
 
+    function onDelete(name: string){
+        const newTags = [...tags.filter(tag => tag !== name)];
+        dispatch(tagsUpdateAction(newTags));
+    }
+
 
     return <div>
         <Header />
-        {tags.map(tag => <TagRow key={tag} name={tag} onUpdate={onUpdateTag}></TagRow>)}
+        {tags.map(tag => <TagRow key={tag} name={tag} onUpdate={onUpdateTag} onDelete={onDelete}></TagRow>)}
         <button onClick={onSave}>Save</button>
         <button onClick={onCancel}>Cancel</button>
     </div>

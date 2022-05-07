@@ -11,9 +11,9 @@ import { Store } from './store/Types';
 import { logout } from './store/login/actionLogin';
 import { ADMIN } from './consts/consts';
 import { UserInfo, UserResponse } from './types/User';
-import { Link } from 'react-router-dom';
 import { Users } from './components/users/Users';
 import { Tags } from './components/tags/Tags';
+import { News } from './components/news/News';
 
 function App() {
   const user = useSelector<Store, UserInfo | null>(state => getUser(state));
@@ -26,6 +26,7 @@ function App() {
           <Route path='/signup' element={user ? <Navigate to="/" /> : <SignUp />}></Route>
           <Route path='/users' element={<Users />}></Route>
           <Route path='/tags' element={<Tags />}></Route>
+          <Route path='/news' element={<News />}></Route>
         </Routes>
       </React.Fragment>
     </>

@@ -1,6 +1,5 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import { EditRoleParams } from "../../api/requset/UserRequsetEntity";
-import { signUpUrl } from "../../api/signUpEndpoint";
 import { editRoleApiCall,  getLogin, getUser, getUserMe, getUsersApi, loginUrl, signupApi } from "../../api/userEndpoint";
 import { LoginResponse, UserInfo, UserRequest, UserResponse } from "../../types/User";
 import { loginSuccessfull } from "../login/actionLogin";

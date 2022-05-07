@@ -60,8 +60,328 @@ export default class Storage {
         // published one
         news.push(this.addNews(new News({
             header: 'Important thing!',
-            description: 'A thing happened here yestarday. Details are being ascertained.',
+            description: '1A thing happened here yestarday. Details are being ascertained.',
             tags: new Set(['general', 'news']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '2A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '3A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '4A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '5A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '6A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '7A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '8A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '9A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '10A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '11A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '12A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '13A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '14A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '15A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '16A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '17A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '18A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '19A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '20A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '21A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '22A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '23A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '24A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '25A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '26A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '27A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '28A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '29A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '30A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '30A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '30A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '30A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '30A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '30A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '30A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '30A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '30A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '30A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '30A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Breaking news!',
+            description: '30A thing happened here yestarday. Details are being ascertained.',
+            tags: new Set(['general', 'art']),
             state: State.published,
             publicationDate: new Date(),
             author: id

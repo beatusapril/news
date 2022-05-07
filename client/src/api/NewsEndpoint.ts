@@ -3,7 +3,7 @@ import { serverUrl } from "./server";
 
 const getNewsUrl = (req: NewsRequest) => {
     let queryParams: string[] = []
-    if (req.tags) {
+    if (req.tags && req.tags.length !== 0) {
         queryParams.push(`tags=${req.tags}`);
     }
     if (req.author) {

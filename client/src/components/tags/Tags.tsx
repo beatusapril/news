@@ -9,7 +9,7 @@ import { TagRow } from "./tagsrow/TagRow";
 
 export function Tags() {
     const tags = useSelector<Store, string[]>(state => getTags(state));
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(tagsFetchAction());

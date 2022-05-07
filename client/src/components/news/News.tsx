@@ -9,6 +9,7 @@ import { UserInfo } from "../../types/User";
 import { Header } from "../header/Header";
 import { Pagination } from "../pagination/Pagination";
 import { PaginationData } from "../pagination/PaginationTypes";
+import { Filter } from "./filter/Filter";
 import { NewCard } from "./newCard/NewCard";
 
 export function News() {
@@ -41,8 +42,28 @@ export function News() {
     if (!user && !localStorage.getItem("auth")){
         return <Navigate to="/"/>
     }
+
+    const onSubmit = (filterParam: NewsRequest) => {
+        const filterNew = {...filter, tags: filterParam.tags,
+            onlyNew: filterParam.onlyNew,
+            author: filterParam.author,
+            header: filterParam.header}
+        setFilter(filterNew);
+        dispatch(newsFetchAction(filterNew));
+    }
+
+    const onReset = (filterParam: NewsRequest) => {
+        const filterNew = {...filter, tags: filterParam.tags,
+            onlyNew: filterParam.onlyNew,
+            author: filterParam.author,
+            header: filterParam.header}
+        setFilter(filterNew);
+        dispatch(newsFetchAction(filterNew));
+    }
+
     return <div>
         <Header/>
+        <Filter onSubmit={onSubmit} onReset={onReset}/>
         <span>News</span>
         {news && news.map(newInfo => <NewCard card={newInfo}/>)}
         <div>

@@ -8,7 +8,7 @@ import { NewsRequest } from "../../../types/News"
 import { FilterProps, TagRowFilterProps } from "./FilterTypes"
 
 
-function TagRowFilter(props: TagRowFilterProps) {
+export function TagRowFilter(props: TagRowFilterProps) {
     function onDelete() {
         props.onDelete(props.name);
     }

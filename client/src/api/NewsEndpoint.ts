@@ -1,4 +1,4 @@
-import { NewsRequest } from "../types/News";
+import { NewsCreateRequest, NewsRequest } from "../types/News";
 import { serverUrl } from "./server";
 
 const getNewsUrl = (req: NewsRequest) => {
@@ -33,6 +33,7 @@ const getNewsUrl = (req: NewsRequest) => {
     }
     return url;
 }
+const newsCreateUrl = `${serverUrl}/news/`
 
 export async function getNewsApi(token: string, req: NewsRequest) {
     const result = await fetch(getNewsUrl(req), {
@@ -42,6 +43,26 @@ export async function getNewsApi(token: string, req: NewsRequest) {
             'Access-Control-Allow-Origin': '*',
             'token': token
         }
+    })
+        .then((response) => response.json())
+        .catch((error) => {
+            throw error;
+        });
+
+    return result;
+}
+
+export async function createNewsApi(token: string, req: NewsCreateRequest) {
+    //2022-05-07
+    const objectFormat = {...req, publicationDate: new Date(req.publicationDate).toDateString()}
+    const result = await fetch(newsCreateUrl, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'token': token
+        },
+        body: JSON.stringify(objectFormat )
     })
         .then((response) => response.json())
         .catch((error) => {

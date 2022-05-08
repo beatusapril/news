@@ -14,6 +14,7 @@ import { UserInfo, UserResponse } from './types/User';
 import { Users } from './components/users/Users';
 import { Tags } from './components/tags/Tags';
 import { News } from './components/news/News';
+import { NewsCreate } from './components/news/newCreate/NewsCreate';
 
 function App() {
   const user = useSelector<Store, UserInfo | null>(state => getUser(state));
@@ -27,6 +28,7 @@ function App() {
           <Route path='/users' element={<Users />}></Route>
           <Route path='/tags' element={<Tags />}></Route>
           <Route path='/news' element={<News />}></Route>
+          <Route path='/news/create' element={<NewsCreate />}></Route>
         </Routes>
       </React.Fragment>
     </>

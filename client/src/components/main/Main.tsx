@@ -8,6 +8,7 @@ import { Link, Navigate } from 'react-router-dom'
 import {  logout } from "../../store/login/actionLogin";
 import { SignUp } from "../signup/SignUp";
 import { Header } from "../header/Header";
+import { NotAuth } from "../helpers/NotAuth";
 
 export function Main() {
   const user = useSelector<Store>(state => getUser(state));
@@ -15,6 +16,6 @@ export function Main() {
   return <>{user && <div>
     <Header></Header>
   </div>}
-  {!user && <div> <Link to="/login">Login</Link> Not Register? <Link to="signup">Register</Link></div>}
+  {!user && <NotAuth/>}
   </>
 }

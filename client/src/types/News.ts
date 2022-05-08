@@ -1,3 +1,7 @@
+export enum NewState{
+    draft = 'draft', published='published'
+}
+
 export interface NewInfo{
     header: string,
     description: string,
@@ -25,4 +29,13 @@ export interface NewsRequest{
     header: string | null,
     offset: number,
     limit: number
+}
+
+export interface NewsCreateRequest{
+    header: string,
+    description: string,
+    tags: string[]
+    state: NewState
+    publicationDate: string
+
 }

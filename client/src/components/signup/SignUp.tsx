@@ -20,6 +20,10 @@ export function SignUp() {
         if (!values.password) {
             errors.password = 'Required'
         }
+        if (!errors.password && !errors.login){
+            return {};
+        }
+        return errors;
     }
     const formik = useFormik({
         initialValues: formValues,

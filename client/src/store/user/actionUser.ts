@@ -1,6 +1,6 @@
 import { AnyAction } from "@reduxjs/toolkit";
-import { UserInfo, UserRequest } from "../../types/User";
-import { FETCH_ME, FETCH_ME_FAILURE, FETCH_ME_SUCCESSFULL, LOGIN, LOGIN_FAILURE, LOGIN_SUCCESSFULL, LOGOUT, LOGOUT_FAILURE, LOGOUT_SUCCESSFULL } from "./actionConsts";
+import { UserInfo, UserRequest, UserUpdateRequest } from "../../types/User";
+import { FETCH_ME, FETCH_ME_FAILURE, FETCH_ME_SUCCESSFULL, LOGIN, LOGIN_FAILURE, LOGIN_SUCCESSFULL, LOGOUT, LOGOUT_FAILURE, LOGOUT_SUCCESSFULL, ME_UPDATE } from "./actionConsts";
 
 export function login(user: UserRequest): AnyAction {
     return { type: LOGIN, payload: user }
@@ -36,4 +36,12 @@ export function fetchMeSuccessfull(user: UserInfo): AnyAction{
 
 export function fetchMeFailure(): AnyAction{
     return {type: FETCH_ME_FAILURE, payload: null}
+}
+
+export function meUpdateAction(user: UserUpdateRequest): AnyAction{
+    return {type: ME_UPDATE, payload: user}
+}
+
+export function meUpdateSuccessfull(user: UserUpdateRequest): AnyAction{
+    return {type: FETCH_ME_FAILURE, payload: user}
 }

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';
 import { getUser } from '../../selectors/selectors';
-import { login } from '../../store/login/actionLogin';
+import { login } from '../../store/user/actionUser';
 import { Store } from '../../store/Types';
 import { UserRequest } from '../../types/User';
 

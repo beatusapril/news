@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../selectors/selectors";
-import { fetchMeAction } from "../../store/login/actionLogin";
+import { fetchMeAction } from "../../store/user/actionUser";
 import { Store } from "../../store/Types";
 import { fetchUsersAction } from "../../store/users/usersAction";
 import { UserInfo } from "../../types/User";

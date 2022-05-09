@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router";
 import { Link } from "react-router-dom";
-import { ADMIN, WRITER } from "../../consts/consts";
+import { ADMIN, PAGE_LIMIT, WRITER } from "../../consts/consts";
 import { getNews, getTotalCountNews, getUser } from "../../selectors/selectors";
 import { newsFetchAction } from "../../store/news/newsAction";
 import { Store } from "../../store/Types";
@@ -17,7 +17,7 @@ import { NewCard } from "./newCard/NewCard";
 
 export function News() {
 
-    const pageLimit = 5;
+    const pageLimit = PAGE_LIMIT;
     const user = useSelector<Store, UserInfo | null>(state => getUser(state));
 
     const [filter, setFilter] = useState<NewsRequest>({
@@ -75,6 +75,12 @@ export function News() {
         {user && <div>
             <Header />
             <Filter onSubmit={onSubmit} onReset={onReset} />
+            <div>
+                <ul>
+                    <li><Link to="/news">News</Link></li>
+                    <li><Link to="/news-subscribe">News subscribe</Link></li>
+                </ul>
+            </div>
             <span>News</span>
             {user && (user.role === ADMIN || user.role === WRITER) && <div><Link to="/news/create">Add news</Link></div>}
             {news && news.map(newInfo => <NewCard card={newInfo} />)}

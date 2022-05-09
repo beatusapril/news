@@ -37,5 +37,4 @@ export interface NewsCreateRequest{
     tags: string[]
     state: NewState
     publicationDate: string
-
 }

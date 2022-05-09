@@ -5,7 +5,7 @@ import { getUser } from "../../selectors/selectors";
 import { Store } from "../../store/Types";
 import { Login } from "../login/Login";
 import { Link, Navigate } from 'react-router-dom'
-import {  logout } from "../../store/login/actionLogin";
+import {  logout } from "../../store/user/actionUser";
 import { SignUp } from "../signup/SignUp";
 import { Header } from "../header/Header";
 import { NotAuth } from "../helpers/NotAuth";

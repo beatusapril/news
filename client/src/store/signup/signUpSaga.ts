@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import { getLogin, getUser, getUserMe, loginUrl, signupApi } from "../../api/userEndpoint";
 import { LoginResponse, UserRequest, UserResponse } from "../../types/User";
-import { loginSuccessfull } from "../login/actionLogin";
+import { loginSuccessfull } from "../user/actionUser";
 import { SIGNUP } from "./actionConsts";
 import { signUpFailure } from "./actionSignup";
 

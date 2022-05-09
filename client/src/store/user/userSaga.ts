@@ -1,8 +1,8 @@
 import { call, put, takeEvery } from "redux-saga/effects"
-import { getLogin, getUser, logoutUrl } from "../../api/userEndpoint";
-import { LoginResponse, UserRequest, UserResponse } from "../../types/User";
-import { FETCH_ME, LOGIN, LOGOUT } from "./actionConsts"
-import { fetchMeFailure, fetchMeSuccessfull, loginFailure, loginSuccessfull, logoutFailure, logoutSuccesfull } from "./actionLogin";
+import { editMeApi, getLogin, getUser, logoutUrl } from "../../api/userEndpoint";
+import { LoginResponse, UserRequest, UserResponse, UserUpdateRequest } from "../../types/User";
+import { FETCH_ME, LOGIN, LOGOUT, ME_UPDATE } from "./actionConsts"
+import { fetchMeFailure, fetchMeSuccessfull, loginFailure, loginSuccessfull, logoutFailure, logoutSuccesfull, meUpdateSuccessfull } from "./actionUser";
 
 type Params = { payload: UserRequest, type: string }
 function* login(args: Params) {
@@ -52,4 +52,21 @@ function* fetchMe() {
 
 export function* watcherFetchMe() {
     yield takeEvery(FETCH_ME, fetchMe);
+}
+
+type ParamsMeUpdate = {type: string, payload: UserUpdateRequest}
+function* meUpdate(args: ParamsMeUpdate) {
+    try {
+        const token = localStorage.getItem("auth");
+        if (token) {
+            yield call(editMeApi, token, args.payload);
+            yield put(meUpdateSuccessfull(args.payload));
+        }
+    } catch (error) {
+        
+    }
+}
+
+export function* watcherMeUpdate() {
+    yield takeEvery(ME_UPDATE, meUpdate);
 }

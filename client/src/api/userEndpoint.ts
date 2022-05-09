@@ -1,4 +1,4 @@
-import { Role, UserRequest } from "../types/User";
+import { Role, UserRequest, UserUpdateRequest } from "../types/User";
 import { serverUrl } from "./server";
 
 export const loginUrl = `${serverUrl}/auth/login`
@@ -7,6 +7,7 @@ export const logoutUrl = `${serverUrl}/auth/logout`
 export const signUpUrl = `${serverUrl}/auth/signup`
 export const getUsers = `${serverUrl}/admin/users`
 export const editRoleApi = (id: number) => `${serverUrl}/admin/user/${id}`
+export const editMeUrl = `${serverUrl}/user/me`
 
 
 export async function getLogin(user: UserRequest) {
@@ -94,4 +95,21 @@ export async function editRoleApiCall(token: string, role:Role, id: number) {
         throw error;
       });  
     return result;
+}
+
+export async function editMeApi(token: string, body: UserUpdateRequest) {
+  const result = await fetch(editMeUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'token': token
+    },
+    body: JSON.stringify(body)
+  })
+    .then((response) => response.json())
+    .catch((error) => {
+      throw error;
+    });  
+  return result;
 }

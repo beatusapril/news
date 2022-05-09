@@ -6,4 +6,5 @@ export interface Store {
     users: UserInfo[]
     tags: string[],
     news: NewsResponse
+    subscribeNews: NewsResponse
 }

@@ -43,3 +43,13 @@ export interface UserResponse{
     me: UserInfo
 }
 
+export interface UserUpdateRequest{
+    tags: string[];
+    firstName: string,
+    lastName: string,
+    phone: string,
+    showFirstName: boolean,
+    showLastName: boolean,
+    showPhone: boolean
+}
+

@@ -12,6 +12,7 @@ import { UserInfo } from "../../../types/User";
 import { Header } from "../../header/Header";
 import { TagRowFilter } from "../filter/Filter";
 import DatePicker from "react-datepicker";
+import { TagInput } from "../tagInput/TagInput";
 
 
 export function NewsCreate() {
@@ -23,15 +24,9 @@ export function NewsCreate() {
         state: NewState.published,
         tags: []
     });
-    const tags = useSelector<Store, string[]>(state => getTags(state));
-    const [newTag, setNewTag] = useState('');
     const [redirect, setRedirect] = useState(false);
     const dispatch = useDispatch();
     const user = useSelector<Store, UserInfo | null>(state => getUser(state));
-
-    useEffect(() => {
-        dispatch(tagsFetchAction());
-    }, []);
 
     const validateDescription = (errors: any, values: NewsCreateRequest) => {
         if (!values.description) {
@@ -67,19 +62,14 @@ export function NewsCreate() {
             setNewInfo({ ...newInfo, tags: newTags })
         }
     }
-    const addTag = () => {
-        if (newInfo.tags !== null && newInfo.tags !== undefined && newTag) {
-            if (newInfo.tags?.filter(tag => tag === newTag).length > 0) {
+    const addTag = (tagNew: string) => {
+        if (newInfo.tags !== null && newInfo.tags !== undefined && tagNew) {
+            if (newInfo.tags?.filter(tag => tag === tagNew).length > 0) {
                 return;
             };
-            newInfo.tags?.push(newTag);
+            newInfo.tags?.push(tagNew);
             const newTags = [...newInfo.tags];
             setNewInfo({ ...newInfo, tags: newTags })
-        }
-    }
-    const onChangeTag = (ev: any) => {
-        if (ev.target.value) {
-            setNewTag(ev.target.value);
         }
     }
 
@@ -135,18 +125,7 @@ export function NewsCreate() {
                             <option value={NewState.draft}>Draft</option>
                         </Field>
                     </div>
-                    <div>
-                        <ul>
-                            {newInfo.tags?.map(tag => <li><TagRowFilter name={tag} onDelete={onDelete} /> </li>)}
-                        </ul>
-                        <div>
-                            <select onChange={onChangeTag}>
-                                <option>{''}</option>
-                                {tags.map(tag => <option>{tag}</option>)}
-                            </select>
-                            <button type="button" onClick={addTag}>Add tag</button>
-                        </div>
-                    </div>
+                    <TagInput tags={newInfo.tags} onDelete={onDelete} addTag={addTag}/>
                     <button type="submit" disabled={!(formik.isValid)}>Submit</button>
                 </form>
             </FormikProvider>

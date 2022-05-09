@@ -2,7 +2,7 @@ import { call, put, takeEvery } from "redux-saga/effects";
 import { EditRoleParams } from "../../api/requset/UserRequsetEntity";
 import { editRoleApiCall,  getLogin, getUser, getUserMe, getUsersApi, loginUrl, signupApi } from "../../api/userEndpoint";
 import { LoginResponse, UserInfo, UserRequest, UserResponse } from "../../types/User";
-import { loginSuccessfull } from "../login/actionLogin";
+import { loginSuccessfull } from "../user/actionUser";
 import { fetchUsersAction, fetchUsersFailure, fetchUsersSuccesfull } from "./usersAction";
 import { EDIT_ROLE, FETCH_ME, FETCH_USERS } from "./usersActionConsts";
 

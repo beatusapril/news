@@ -1,4 +1,4 @@
-import { Role } from "../types/User";
+import { Role, UserInfo, UserUpdateRequest } from "../types/User";
 
 export function fromNumberRole(number: number){
     switch(number){
@@ -11,4 +11,14 @@ export function fromNumberRole(number: number){
         default:
             return null;
     }
+}
+
+export function fromUser(user: UserInfo): UserUpdateRequest{
+ return { tags: user.tags,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    phone: user.phone,
+    showFirstName: user.showFirstName,
+    showLastName: user.showLastName,
+    showPhone: user.showPhone};
 }

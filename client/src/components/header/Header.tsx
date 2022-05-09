@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
 import { ADMIN } from "../../consts/consts";
 import { getUser } from "../../selectors/selectors";
-import { fetchMeAction, logout } from "../../store/login/actionLogin";
+import { fetchMeAction, logout } from "../../store/user/actionUser";
 import { Store } from "../../store/Types";
 import { UserInfo } from "../../types/User";
 

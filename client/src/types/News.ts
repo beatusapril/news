@@ -2,13 +2,16 @@ export enum NewState{
     draft = 'draft', published='published'
 }
 
-export interface NewInfo{
+export interface NewsInfo{
+    id: number,
     header: string,
     description: string,
     tags: string[],
     authorNickname: string,
     authorFirstName: string,
-    authorLastName: string
+    authorLastName: string,
+    publicationDate: string,
+    author: number
 }
 
 export interface NewsWrapper{
@@ -16,7 +19,7 @@ export interface NewsWrapper{
 }
 
 export interface NewsResponse{
-    list: NewInfo[],
+    list: NewsInfo[],
     offset: number;
     limit: number;
     total: number;
@@ -32,6 +35,15 @@ export interface NewsRequest{
 }
 
 export interface NewsCreateRequest{
+    header: string,
+    description: string,
+    tags: string[]
+    state: NewState
+    publicationDate: string
+}
+
+export interface NewsUpdateRequest{
+    id: number,
     header: string,
     description: string,
     tags: string[]

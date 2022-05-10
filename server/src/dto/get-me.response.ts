@@ -10,6 +10,7 @@ export default class GetMeResponse {
   readonly showLastName?: boolean
   readonly showPhone?: boolean
   readonly role: Role
+  readonly id: number
 
   constructor(props: GetMeResponse) {
     this.firstName = props.firstName
@@ -21,5 +22,6 @@ export default class GetMeResponse {
     this.showLastName = props.showLastName
     this.showPhone = props.showPhone
     this.role = props.role
+    this.id = props.id
   }
 }

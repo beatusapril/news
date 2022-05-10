@@ -110,7 +110,7 @@ export default class NewsService {
   }
 
   public static updateNews(id: number, req: UpdateNewsRequest, auth: AuthData) {
-    const oldNews = Storage.news.find(item => item.id===id)
+    const oldNews = Storage.news.find(item => item.id==id)
     if(oldNews.author !== auth.userId) {
       throw new createHttpError.NotFound()
     }
@@ -122,7 +122,7 @@ export default class NewsService {
   }
 
   public static deleteNews(id: number, auth: AuthData) {
-    const news = Storage.news.find(item => item.id===id)
+    const news = Storage.news.find(item => item.id==id)
     if(news.author !== auth.userId && auth.role < Role.admin) {
       throw new createHttpError.NotFound()
     }

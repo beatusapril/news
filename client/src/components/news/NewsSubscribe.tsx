@@ -8,7 +8,7 @@ import { newsFetchAction } from "../../store/news/newsAction";
 import { fetchSubscribeNewsAction } from "../../store/subscribeNews/SubscribeNewsAction";
 import { Store } from "../../store/Types";
 import { meUpdateAction } from "../../store/user/actionUser";
-import { NewInfo, NewsRequest } from "../../types/News";
+import { NewsInfo, NewsRequest } from "../../types/News";
 import { UserInfo } from "../../types/User";
 import { fromUser } from "../../utils/Utils";
 import { Header } from "../header/Header";
@@ -31,7 +31,7 @@ export function NewsSubscribe() {
         limit: pageLimit
     });
     const totalCount = useSelector<Store, number>(state => getTotalCountSubscribeNews(state));
-    const news = useSelector<Store, NewInfo[]>(state => getSubscribeNews(state));
+    const news = useSelector<Store, NewsInfo[]>(state => getSubscribeNews(state));
     const dispatch = useDispatch();
 
     useEffect(() => {

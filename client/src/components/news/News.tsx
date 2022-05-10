@@ -6,7 +6,7 @@ import { ADMIN, PAGE_LIMIT, WRITER } from "../../consts/consts";
 import { getNews, getTotalCountNews, getUser } from "../../selectors/selectors";
 import { newsFetchAction } from "../../store/news/newsAction";
 import { Store } from "../../store/Types";
-import { NewInfo, NewsRequest } from "../../types/News";
+import { NewsInfo, NewsRequest } from "../../types/News";
 import { UserInfo } from "../../types/User";
 import { Header } from "../header/Header";
 import { NotAuth } from "../helpers/NotAuth";
@@ -29,7 +29,7 @@ export function News() {
         limit: pageLimit
     });
     const totalCount = useSelector<Store, number>(state => getTotalCountNews(state));
-    const news = useSelector<Store, NewInfo[]>(state => getNews(state));
+    const news = useSelector<Store, NewsInfo[]>(state => getNews(state));
     const dispatch = useDispatch();
     useEffect(() => { dispatch(newsFetchAction(filter)) }, [])
 
@@ -72,8 +72,8 @@ export function News() {
     }
 
     return <>{!user && <NotAuth />}
+    <Header />
         {user && <div>
-            <Header />
             <Filter onSubmit={onSubmit} onReset={onReset} />
             <div>
                 <ul>

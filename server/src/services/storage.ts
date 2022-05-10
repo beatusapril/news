@@ -33,6 +33,15 @@ export default class Storage {
     public static init() {
         // add admin
         let id = Storage.userIndex++
+        const news = []
+        news.push(this.addNews(new News({
+            header: 'Admin news!',
+            description: 'Lorem ipsum news. News have more symbols in ',
+            tags: new Set(['general', 'news']),
+            state: State.published,
+            publicationDate: new Date(),
+            author: id
+        })))
         this.users.set(
             id,
             {
@@ -57,7 +66,6 @@ export default class Storage {
         )
         // add author and news
         id = Storage.userIndex++
-        const news = []
         // published one
         news.push(this.addNews(new News({
             header: 'Important thing!',

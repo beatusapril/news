@@ -1,3 +1,4 @@
+import { NewsInfo, NewState, NewsUpdateRequest } from "../types/News";
 import { Role, UserInfo, UserUpdateRequest } from "../types/User";
 
 export function fromNumberRole(number: number){
@@ -22,3 +23,12 @@ export function fromUser(user: UserInfo): UserUpdateRequest{
     showLastName: user.showLastName,
     showPhone: user.showPhone};
 }
+
+export function fromNewsInfo(news: NewsInfo): NewsUpdateRequest{
+    return {id: news.id,
+        header: news.header,
+        description: news.description,
+        tags: news.tags,
+        state: NewState.published,
+        publicationDate: news.publicationDate};
+   }

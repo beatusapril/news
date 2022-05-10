@@ -1,6 +1,6 @@
 import { AnyAction } from "@reduxjs/toolkit";
-import { NewsCreateRequest, NewsRequest, NewsResponse } from "../../types/News";
-import { NEWS_CREATE, NEWS_FETCH, NEWS_FETCH_FAILURE, NEWS_FETCH_SUCCESSFULL } from "./newsActionConsts";
+import { NewsCreateRequest, NewsRequest, NewsResponse, NewsUpdateRequest } from "../../types/News";
+import { NEWS_CREATE, NEWS_FETCH, NEWS_FETCH_FAILURE, NEWS_FETCH_SUCCESSFULL, NEWS_UPDATE } from "./newsActionConsts";
 
 export function newsFetchAction(request: NewsRequest): AnyAction {
     return { type: NEWS_FETCH, payload: request }
@@ -16,4 +16,8 @@ export function newsFetchFailure(): AnyAction {
 
 export function newsCreate(news: NewsCreateRequest): AnyAction {
     return { type: NEWS_CREATE, payload: news }
+}
+
+export function newsUpdateAction(news: NewsUpdateRequest): AnyAction {
+    return { type: NEWS_UPDATE, payload: news }
 }

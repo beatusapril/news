@@ -32,3 +32,14 @@ export function fromNewsInfo(news: NewsInfo): NewsUpdateRequest{
         state: NewState.published,
         publicationDate: news.publicationDate};
    }
+
+export function getEmptyUser(): UserUpdateRequest{
+    return { tags: [],
+       firstName: '',
+       lastName: '',
+       phone: '',
+       showFirstName: true,
+       showLastName: true,
+       showPhone: true
+   }
+}

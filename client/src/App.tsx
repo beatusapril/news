@@ -16,6 +16,7 @@ import { Tags } from './components/tags/Tags';
 import { News } from './components/news/News';
 import { NewsCreate } from './components/news/newCreate/NewsCreate';
 import { NewsSubscribe } from './components/news/NewsSubscribe';
+import { Profile } from './components/profile/Profile';
 
 function App() {
   const user = useSelector<Store, UserInfo | null>(state => getUser(state));
@@ -31,6 +32,7 @@ function App() {
           <Route path='/news' element={<News />}></Route>
           <Route path='/news/create' element={<NewsCreate />}></Route>
           <Route path='/news-subscribe' element={<NewsSubscribe />}></Route>
+          <Route path='/profile' element={<Profile/>}></Route>
         </Routes>
       </React.Fragment>
     </>

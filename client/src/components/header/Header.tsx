@@ -25,6 +25,7 @@ export function Header() {
             {user.role === ADMIN && <li><Link to="/users">Users</Link></li>}
             {user.role === ADMIN && <li><Link to="/tags">Tags</Link></li>}
             <li><Link to="/news">News</Link></li>
+            <li><Link to="/profile">Profile</Link></li>
         </ul>
             <button onClick={logoutHandler}>Logout</button></>}
     </div>

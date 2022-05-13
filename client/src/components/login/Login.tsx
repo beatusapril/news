@@ -6,6 +6,7 @@ import { getUser } from '../../selectors/selectors';
 import { login } from '../../store/user/actionUser';
 import { Store } from '../../store/Types';
 import { UserRequest } from '../../types/User';
+import '../login/Login.css'
 
 
 export function Login() {
@@ -41,26 +42,26 @@ export function Login() {
         return <Navigate to="/" />
     }
 
-    return <>
-        News
+    return <div className="login-form">
+        <h2 className="header">Sign in to News</h2>
         <FormikProvider value={formik}>
-            <form onSubmit={formik.handleSubmit} >
-                <div className="text-field">
+            <form onSubmit={formik.handleSubmit} className="">
+                <div className="form-group">
                     <label htmlFor="login" className="text-field__label">Login</label>
-                    <Field className="text-field__input" label="Login" type="text"
+                    <Field className="form-control" label="Login" type="text"
                         name="login" id="login" onChange={formik.handleChange} value={formik.values.login} onBlur={formik.handleBlur}>
                     </Field>
-                    {formik.errors.login && formik.touched.login && <div className="text-field__message">{formik.errors.login}</div>}
+                    {formik.errors.login && formik.touched.login && <div className="invalid-error">{formik.errors.login}</div>}
                 </div>
-                <div className="text-field">
+                <div className="form-group">
                     <label className="text-field__label" htmlFor="password">Password</label>
-                    <Field className="text-field__input" label="Password" type="password"
+                    <Field className="form-control" label="Password" type="password"
                         onChange={formik.handleChange} value={formik.values.password} name="password" id="password" onBlur={formik.handleBlur}></Field>
-                    {formik.errors.password && formik.touched.password && <div className="text-field__message">{formik.errors.password}</div>}
+                    {formik.errors.password && formik.touched.password && <div className="invalid-error">{formik.errors.password}</div>}
                 </div>
-                <button type="submit" disabled={!(formik.isValid)}>Submit</button>
+                <button type="submit" disabled={!(formik.isValid)} className="btn btn-login">Login</button>
             </form>
         </FormikProvider>
         Not Register?<Link to="/signup" >Register</Link>
-    </>
+    </div>
 }

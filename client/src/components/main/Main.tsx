@@ -13,6 +13,10 @@ import { NotAuth } from "../helpers/NotAuth";
 export function Main() {
   const user = useSelector<Store>(state => getUser(state));
 
+  if (user){
+    return <Navigate to="/news"/>
+  }
+
   return <>{user && <div>
     <Header></Header>
   </div>}

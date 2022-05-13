@@ -17,6 +17,7 @@ import { News } from './components/news/News';
 import { NewsCreate } from './components/news/newCreate/NewsCreate';
 import { NewsSubscribe } from './components/news/NewsSubscribe';
 import { Profile } from './components/profile/Profile';
+import "./normalize.css"
 
 function App() {
   const user = useSelector<Store, UserInfo | null>(state => getUser(state));

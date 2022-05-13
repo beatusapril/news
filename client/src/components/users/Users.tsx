@@ -20,6 +20,8 @@ export function Users(){
 
     return <div>
     <Header/>
+    <div className="wrapper padding">
     {users.map(user => <UserRow key={user.id} user={user}></UserRow>)}
+    </div>
     </div>
 }

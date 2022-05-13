@@ -42,7 +42,7 @@ export function Login() {
         return <Navigate to="/" />
     }
 
-    return <div className="login-form">
+    return <div className='login__wrapper'><div className="login-form">
         <h2 className="header">Sign in to News</h2>
         <FormikProvider value={formik}>
             <form onSubmit={formik.handleSubmit} className="">
@@ -63,5 +63,6 @@ export function Login() {
             </form>
         </FormikProvider>
         Not Register?<Link to="/signup" >Register</Link>
+    </div>
     </div>
 }

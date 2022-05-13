@@ -1,0 +1,22 @@
+
+
+.not-auth__wrapper{
+    background: var(--main-bg-color);
+    width: 100vw;
+    height: 100vh;
+}
+
+.not-auth{
+  background: var(--white-bg-color);
+  width: 400px;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  padding: 40px 30px;
+  border-radius: 10px;
+  transform: (-50%, -50%);
+}
+
+.not-auth__header{
+    font-size: 60px;
+}

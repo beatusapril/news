@@ -1,0 +1,18 @@
+.tags_tag-row{
+    padding: 5px 10px;
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.tags__tag-name{
+    width: 80%;
+    display: block;
+    text-align: center;
+    background: var(--tag-color);
+    border-radius: 10px;
+}
+
+.tags__input{
+    width: 80%;
+    display: block;
+}

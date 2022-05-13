@@ -1,0 +1,12 @@
+.tags__save {
+    margin-right: 10px;
+    display: block;
+}
+
+.tags__button-panel {
+    display: flex;
+}
+
+.tags__input{
+    margin-bottom: 10px;
+}

@@ -31,3 +31,9 @@ body{
 .header{
     text-align: center;
 }
+
+.login__wrapper{
+    width: 100vw;
+    height: 100vh;
+    background: var(--main-bg-color);
+}

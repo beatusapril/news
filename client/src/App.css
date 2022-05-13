@@ -3,9 +3,21 @@
 }
 
 a{
-  color: rgb(73, 158, 65);
+  color: rgb(41, 107, 35);
 }
 
 .wrapper{
   width: 800px;
+  margin: 0 auto;
+}
+
+.padding{
+  padding: 10px;
+}
+
+:root {
+  --main-bg-color: rgb(199, 248, 184);
+  --white-bg-color: rgb(245, 250, 244);
+  --link-color: rgb(41, 107, 35);
+  --tag-color: rgb(249, 220, 240);
 }

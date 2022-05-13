@@ -41,7 +41,7 @@ export function SignUp() {
         return <Navigate to="/" />
     }
 
-    return <div className='login-form'>
+    return <div className='sign-up__wrapper'><div className='login-form'>
         <h2>Sign Up to News</h2>
         <FormikProvider value={formik}>
             <form onSubmit={formik.handleSubmit} >
@@ -61,5 +61,6 @@ export function SignUp() {
                 <button type="submit" disabled={!(formik.isValid)} className="btn btn-login">Sign up</button>
             </form>
         </FormikProvider>
+    </div>
     </div>
 }

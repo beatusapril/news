@@ -27,3 +27,9 @@ body{
     font-size: 80%;
     color: #dc3545;
 }
+
+.sign-up__wrapper{
+    background: var(--main-bg-color);
+    width: 100vw;
+    height: 100vh;
+}

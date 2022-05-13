@@ -1,0 +1,12 @@
+.user-component{
+    padding: 20px 10px;
+    border: 2px solid var(--link-color);
+    margin-bottom: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.save-role-button{
+    height: 40px;
+}

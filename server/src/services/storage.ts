@@ -142,6 +142,22 @@ Whichever way you cut it, $1.05 is an astonishingly low value for the Euro. For 
             publicationDate: new Date("2022-05-08"),
             author: id
         })))
+        news.push(this.addNews(new News({
+            header: 'CEB to lend 2 mln euro for Ukrainian refugees in Bulgaria, Moldova, Baltics',
+            description: `SOFIA (Bulgaria), May 13 (SeeNews) - The Council of Europe Development Bank (CEB) said it will grant close to 2 million euro ($2.1 million) from its Migrant and Refugee Fund (MRF) to help support people fleeing the war in Ukraine into Bulgaria, Moldova, Estonia and Lithuania.`,
+            tags: new Set(['general', 'politics']),
+            state: State.published,
+            publicationDate: new Date("2022-05-08"),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'CEB to lend 2 mln euro for Ukrainian refugees in Bulgaria, Moldova, Baltics',
+            description: `SOFIA (Bulgaria), May 13 (SeeNews) - The Council of Europe Development Bank (CEB) said it will grant close to 2 million euro ($2.1 million) from its Migrant and Refugee Fund (MRF) to help support people fleeing the war in Ukraine into Bulgaria, Moldova, Estonia and Lithuania.`,
+            tags: new Set(['general', 'politics']),
+            state: State.published,
+            publicationDate: new Date("2022-05-08"),
+            author: id
+        })))
         this.users.set(
             id,
             {

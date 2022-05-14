@@ -1,21 +1,17 @@
 import { Field, FormikProvider, useFormik } from "formik";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate } from "react-router";
-import { READER } from "../../../../consts/consts";
-import { getUser } from "../../../../selectors/selectors";
+import { READER, TEXTAREA_CONTENT_ROWS } from "../../../../consts/consts";
 import { newsUpdateAction } from "../../../../store/news/newsAction";
-import { Store } from "../../../../store/Types";
 import { NewState, NewsUpdateRequest } from "../../../../types/News";
-import { UserInfo } from "../../../../types/User";
 import { fromNewsInfo } from "../../../../utils/Utils";
 import { TagInput } from "../../tagInput/TagInput";
 import { NewsCardUpdateProps } from "./NewsCardUpdateType";
+import '../newsCardUpdate/NewsCardUpdate.css'
 
 export function NewsCardUpdate(props: NewsCardUpdateProps){
     const [tags, setTags] = useState(props.news.tags)
     const dispatch = useDispatch();
-    const user = useSelector<Store, UserInfo | null>(state => getUser(state));
 
     const validateDescription = (errors: any, values: NewsUpdateRequest) => {
         if (!values.description) {
@@ -75,29 +71,33 @@ export function NewsCardUpdate(props: NewsCardUpdateProps){
         props.resetUpdate();
     }
 
+    function onCancel() {
+        props.resetUpdate();
+    }
+
     return <div>
         <div>
             Update news
             <FormikProvider value={formik}>
                 <form onSubmit={formik.handleSubmit} >
-                    <div className="text-field">
-                        <label htmlFor="date" className="text-field__label">Publication Date</label>
+                    <div>
+                        <label htmlFor="date">Publication Date</label>
                         <input type="date" name="date" id="date" onChange={date => formik.setFieldValue("publicationDate", date.target.value)} onBlur={formik.handleBlur}></input>
-                        {formik.errors.publicationDate && formik.touched.publicationDate && <div className="text-field__message">{formik.errors.header}</div>}
+                        {formik.errors.publicationDate && formik.touched.publicationDate && <div className="invalid-error">{formik.errors.header}</div>}
                     </div>
-                    <div className="text-field">
+                    <div>
                         <label htmlFor="header" className="text-field__label">Header</label>
-                        <Field className="text-field__input" label="Header" type="text"
+                        <Field className="card-update__header" label="Header" type="text"
                             name="header" id="header" onChange={formik.handleChange} value={formik.values.header} onBlur={formik.handleBlur}>
                         </Field>
-                        {formik.errors.header && formik.touched.header && <div className="text-field__message">{formik.errors.header}</div>}
+                        {formik.errors.header && formik.touched.header && <div className="invalid-error">{formik.errors.header}</div>}
                     </div>
                     <div className="text-field">
-                        <label className="text-field__label" htmlFor="description">Description</label>
-                        <textarea name="description" onChange={formik.handleChange} value={formik.values.description} onBlur={formik.handleBlur}>
+                        <label htmlFor="description">Description</label>
+                        <textarea className="card-update__description" rows={TEXTAREA_CONTENT_ROWS} name="description" onChange={formik.handleChange} value={formik.values.description} onBlur={formik.handleBlur}>
                             {formik.values.description}
                         </textarea>
-                        {formik.errors.description && formik.touched.description && <div className="text-field__message">{formik.errors.description}</div>}
+                        {formik.errors.description && formik.touched.description && <div className="invalid-error">{formik.errors.description}</div>}
                     </div>
                     <div className="text-field">
                         <label className="text-field__label" htmlFor="state">State</label>
@@ -107,7 +107,10 @@ export function NewsCardUpdate(props: NewsCardUpdateProps){
                         </Field>
                     </div>
                     <TagInput tags={tags} onDelete={onDelete} addTag={addTag}/>
-                    <button type="submit" disabled={!(formik.isValid)}>Submit</button>
+                    <div className="news-card-update__button-panel">
+                    <button type="submit" disabled={!(formik.isValid)} className="btn-custom news-card-update_offset">Submit</button>
+                    <button type="button" className="btn-custom-no-active">Cancel</button>
+                    </div>
                 </form>
             </FormikProvider>
         </div>

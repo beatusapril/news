@@ -1,0 +1,16 @@
+.card-update__header{
+    width: 100%;
+}
+
+.card-update__description{
+    width: 100%;
+}
+
+.news-card-update__button-panel{
+    margin-left: auto;
+    width: 20%;
+}
+
+.news-card-update_offset{
+    margin-right: 5px;
+}

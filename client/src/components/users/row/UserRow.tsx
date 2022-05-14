@@ -48,6 +48,9 @@ export function UserRow(props: UserRowProps) {
                 <label htmlFor="login">Login:</label>
                 <span id="login">{props.user.login}</span>
             </div>
+            <div className="tag-container">
+                {props.user.tags.map(tag=> <div className="tag-wrapper tag_offset">{tag}</div>)}
+            </div>
         </div>
         <button className="save-role-button btn" onClick={saveRole}>Save role</button>
     </div >

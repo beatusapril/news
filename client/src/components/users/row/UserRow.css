@@ -10,3 +10,14 @@
 .save-role-button{
     height: 40px;
 }
+
+.tag-container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 200px;
+}
+
+.tag_offset{
+    margin-right: 5px;
+    margin-bottom: 5px;
+}

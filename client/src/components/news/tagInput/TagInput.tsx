@@ -5,6 +5,7 @@ import { tagsFetchAction } from "../../../store/tags/TagsAction";
 import { Store } from "../../../store/Types";
 import { TagRowFilter } from "../filter/Filter"
 import { TagInputProps } from "./TagInputTypes"
+import '../tagInput/TagInput.css'
 
 export function TagInput(props: TagInputProps){
 
@@ -27,14 +28,14 @@ export function TagInput(props: TagInputProps){
     }
     return   <div>
     <ul>
-        {props.tags?.map(tag => <li><TagRowFilter name={tag} onDelete={props.onDelete} /> </li>)}
+        {props.tags?.map(tag => <li className="tag-input__item" key={tag}><TagRowFilter key={tag} name={tag} onDelete={props.onDelete} /> </li>)}
     </ul>
     <div>
-        <select onChange={onChangeTag}>
+        <select onChange={onChangeTag} className="tag-input__select">
             <option>{''}</option>
-            {tags.map(tag => <option>{tag}</option>)}
+            {tags.map(tag => <option key={tag}>{tag}</option>)}
         </select>
-        <button type="button" onClick={addTag}>Add tag</button>
+        <button type="button" onClick={addTag} className="btn-custom">Add tag</button>
     </div>
 </div>
 }

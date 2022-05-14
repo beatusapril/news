@@ -6,27 +6,27 @@ import { Store } from "../../../store/Types";
 import { UserInfo } from "../../../types/User";
 import { NewCardProps } from "./NewCardTypes";
 import { NewsCardUpdate } from "./newsCardUpdate/NewsCardUpdate";
+import '../newCard/NewCard.css'
 
-export function NewCard(props: NewCardProps){
-    const [card, setCard] = useState(props.card);
+export function NewCard(props: NewCardProps) {
     const [isEdit, setIsEdit] = useState(false);
     const user = useSelector<Store, UserInfo | null>(state => getUser(state));
 
-    function onEdit(){
+    function onEdit() {
         setIsEdit(true);
     }
 
-    function resetUpdate(){
+    function resetUpdate() {
         setIsEdit(false)
     }
-    return <div>
-        {isEdit && <NewsCardUpdate news={props.card} resetUpdate={resetUpdate}/>}
+    return <div className="news-card">
+        {isEdit && <NewsCardUpdate news={props.card} resetUpdate={resetUpdate} />}
         {!isEdit && <div>
-        {props.card.header}
-        {props.card.authorFirstName}
-        {props.card.authorLastName}
-        {props.card.authorNickname}
-        {props.card.description}
-        {props.card.tags}{ user?.role != READER && user?.id === props.card.author && <button onClick={onEdit}>Edit</button> }</div>}
+            <div className="news-card-author-name">{props.card.publicationDate + ' ' + props.card.authorFirstName + ' ' + props.card.authorLastName + ' ' + props.card.authorNickname}</div>
+            <h6>{props.card.header}</h6>
+            <textarea readOnly={true} name="" id="" rows={5} className="news-card__description">{props.card.description}</textarea>
+            <div>{props.card.tags.map(tag => <div className="tag-view">{tag}</div>)}</div>
+            <div className="btn-panel">{user?.role != READER && user?.id === props.card.author &&
+             <button className="btn-custom-no-active news-card__edit-btn" onClick={onEdit}>Edit</button>}</div></div>}
     </div>
 }

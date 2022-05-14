@@ -17,9 +17,7 @@ export function Main() {
     return <Navigate to="/news"/>
   }
 
-  return <>{user && <div>
-    <Header></Header>
-  </div>}
+  return <>
   {!user && <NotAuth/>}
   </>
 }

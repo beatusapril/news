@@ -1,0 +1,9 @@
+.tag-input__item{
+    list-style-type: none;
+    display: inline-block;
+}
+
+.tag-input__select{
+    display: inline-block;
+    margin-right: 10px;
+}

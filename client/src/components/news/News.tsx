@@ -14,6 +14,7 @@ import { Pagination } from "../pagination/Pagination";
 import { PaginationData } from "../pagination/PaginationTypes";
 import { Filter } from "./filter/Filter";
 import { NewCard } from "./newCard/NewCard";
+import '../news/News.css'
 
 export function News() {
 
@@ -45,10 +46,6 @@ export function News() {
         dispatch(newsFetchAction(newFilter));
     }
 
-    if (!user && !localStorage.getItem("auth")) {
-        return <Navigate to="/" />
-    }
-
     const onSubmit = (filterParam: NewsRequest) => {
         const filterNew = {
             ...filter, tags: filterParam.tags,
@@ -72,20 +69,28 @@ export function News() {
     }
 
     return <>{!user && <NotAuth />}
-    <Header />
-        {user && <div>
-            <Filter onSubmit={onSubmit} onReset={onReset} />
-            <div>
-                <ul>
-                    <li><Link to="/news">News</Link></li>
-                    <li><Link to="/news-subscribe">News subscribe</Link></li>
-                </ul>
+        <Header />
+        {user && <div className="wrapper">
+            <div className="news-wrapper">
+                <Filter onSubmit={onSubmit} onReset={onReset} />
+                <div className="news-block">
+                    <div className="news-block-center">
+                        {news && news.map(newInfo => <NewCard card={newInfo} />)}
+                    </div>
+                    <div className="pagination">
+                        <Pagination totalRecords={totalCount} pageLimit={pageLimit} pageNeighbours={1} onPageChanged={onPageChanged} />
+                    </div>
+                </div>
+                <div className="news-link-block">
+                    <div>
+                        <ul className="news-link-block__navigation-menu">
+                            <li className="navigation-menu__item navigation-menu__current"><Link to="/news">News</Link></li>
+                            <li className="navigation-menu__item"><Link to="/news-subscribe">News subscribe</Link></li>
+                        </ul>
+                    </div>
+                    {(user.role === ADMIN || user.role === WRITER) && <div><Link to="/news/create" className="news-link-block_add-news">Add news</Link></div>}
+                </div>
             </div>
-            <span>News</span>
-            {user && (user.role === ADMIN || user.role === WRITER) && <div><Link to="/news/create">Add news</Link></div>}
-            {news && news.map(newInfo => <NewCard card={newInfo} />)}
-            <div>
-                <Pagination totalRecords={totalCount} pageLimit={pageLimit} pageNeighbours={1} onPageChanged={onPageChanged} />
-            </div>
-        </div>}</>
+        </div>
+        }</>
 }

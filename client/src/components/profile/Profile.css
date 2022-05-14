@@ -1,0 +1,10 @@
+.profile-card{
+    width: 300px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.btn_offset{
+    display: block;
+    margin-left: auto;
+}

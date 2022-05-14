@@ -1,0 +1,49 @@
+.filter-block {
+    max-width: 18%;
+}
+
+.filter-block .form-control{
+    padding: 2px;
+}
+
+.only-new-label{
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.filter__select-tags{
+    margin-top: 10px;
+    margin-right: 5px;
+}
+
+.filter__btn-apply{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.filter__btn-reset{
+    width: 100%;
+}
+
+.filter__tag-row{
+    padding: 5px;
+    background: var(--tag-color);
+    border-radius: 5px;
+    display: inline-block;
+    margin: 0 2px 5px 0;
+  font-size: 10px;
+}
+
+.filter__tag-del-btn{
+    background: url('../../../images/close.png') no-repeat;
+    background-size: contain;
+    width: 10px;
+    height: 10px;
+    border: 0;
+}
+
+.filter__tag-list-item{
+    list-style-type: none;
+    display: inline-block;
+}

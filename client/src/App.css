@@ -6,8 +6,12 @@ a{
   color: rgb(41, 107, 35);
 }
 
+a:hover{
+  color: rgb(18, 44, 16);
+}
+
 .wrapper{
-  width: 800px;
+  width: 1000px;
   margin: 0 auto;
 }
 
@@ -20,4 +24,44 @@ a{
   --white-bg-color: rgb(245, 250, 244);
   --link-color: rgb(41, 107, 35);
   --tag-color: rgb(249, 220, 240);
+  --current-link-color: rgb(218, 215, 215);
+  --hover-nav-color:rgb(159, 153, 153);
+}
+
+.tag-wrapper{
+  display: inline-block;
+  padding: 5px;
+  border-radius: 5px;
+  background: var(--tag-color);
+}
+
+.invalid-error{
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #dc3545;
+}
+
+.btn-custom{
+  background: var(--main-bg-color);
+  border: 0;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.btn-custom-no-active{
+  background: var(--current-link-color);
+  border: 0;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.tag-view{
+  display: inline-block;
+  border-radius: 5px;
+  background: var(--tag-color);
+  margin-bottom: 5px;
+  margin-right: 5px;
+  padding: 5px;
+  font-size: 10px;
 }

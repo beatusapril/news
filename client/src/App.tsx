@@ -15,7 +15,7 @@ import { Users } from './components/users/Users';
 import { Tags } from './components/tags/Tags';
 import { News } from './components/news/News';
 import { NewsCreate } from './components/news/newCreate/NewsCreate';
-import { NewsSubscribe } from './components/news/NewsSubscribe';
+import { NewsSubscribe } from './components/news/newsSubscribe/NewsSubscribe';
 import { Profile } from './components/profile/Profile';
 import "./normalize.css"
 

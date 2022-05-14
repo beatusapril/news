@@ -1,19 +1,20 @@
 import { FormikProvider, FormikState, FormikValues, useFormik } from "formik";
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { getTags } from "../../../selectors/selectors";
 import { tagsFetchAction } from "../../../store/tags/TagsAction";
 import { Store } from "../../../store/Types";
 import { NewsRequest } from "../../../types/News"
 import { FilterProps, TagRowFilterProps } from "./FilterTypes"
+import '../filter/Filter.css'
 
 
 export function TagRowFilter(props: TagRowFilterProps) {
     function onDelete() {
         props.onDelete(props.name);
     }
-    return <div>
-        {props.name} <button onClick={onDelete}>Delete</button>
+    return <div className="filter__tag-row">
+        {props.name} <button className="filter__tag-del-btn" onClick={onDelete}></button>
     </div>
 }
 
@@ -48,6 +49,7 @@ export function Filter(props: FilterProps) {
             newRequest.tags?.push(newTag);
             const newTags = [...newRequest.tags];
             setNewRequest({ ...newRequest, tags: newTags })
+            setNewTag('');
         }
     }
     const onChangeTag = (ev: any) => {
@@ -55,7 +57,7 @@ export function Filter(props: FilterProps) {
             setNewTag(ev.target.value);
         }
     }
-    const reset = (values: NewsRequest ) => {
+    const reset = (values: NewsRequest) => {
         setNewRequest({
             tags: [],
             onlyNew: false,
@@ -77,7 +79,7 @@ export function Filter(props: FilterProps) {
     const submit = (values: NewsRequest) => {
         const tags = newRequest.tags;
         setNewRequest({ ...values, tags: tags });
-        props.onSubmit(values);
+        props.onSubmit({ ...values, tags: tags });
     }
 
     const formik = useFormik({
@@ -85,29 +87,35 @@ export function Filter(props: FilterProps) {
         onSubmit: submit
     });
 
-    return <div>
+    return <div className="filter-block">
         <FormikProvider value={formik}>
             <form onSubmit={formik.handleSubmit}>
-                <label htmlFor="author">Author</label>
-                <input id="author" value={formik.values.author ? formik.values.author : ''} onChange={formik.handleChange}></input>
-                <label htmlFor="header">Header</label>
-                <input id="header" value={formik.values.header ? formik.values.header : ''} onChange={formik.handleChange}></input>
-                <label htmlFor="onlyNew">Only new</label>
-                <input id="onlyNew" type="checkbox" value={formik.values.onlyNew ? String(formik.values.onlyNew) : ''}></input>
+                <div className="form-group">
+                    <label htmlFor="author">Author</label>
+                    <input id="author" className="form-control" value={formik.values.author ? formik.values.author : ''} onChange={formik.handleChange}></input>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="header">Header</label>
+                    <input id="header" className="form-control" value={formik.values.header ? formik.values.header : ''} onChange={formik.handleChange}></input>
+                </div>
+                <div className="form-group">
+                    <label className="only-new-label" htmlFor="onlyNew">Only new</label>
+                    <input  id="onlyNew" type="checkbox" value={formik.values.onlyNew ? String(formik.values.onlyNew) : ''}></input>
+                </div>
                 <div>
                     <ul>
-                        {newRequest.tags?.map(tag => <li><TagRowFilter name={tag} onDelete={onDelete} /> </li>)}
+                        {newRequest.tags?.map(tag => <li className="filter__tag-list-item"><TagRowFilter name={tag} onDelete={onDelete} /> </li>)}
                     </ul>
                     <div>
-                        <select onChange={onChangeTag}>
+                        <select className="filter__select-tags" value={newTag} onChange={onChangeTag}>
                             <option>{''}</option>
                             {tags.map(tag => <option>{tag}</option>)}
                         </select>
-                        <button type="button" onClick={addTag}>Add tag</button>
+                        <button className="btn btn-custom" type="button" onClick={addTag}>Add tag</button>
                     </div>
                 </div>
-                <button type="submit">Apply</button>
-                <button type="reset" onClick={ev => reset(formik.values)}>Reset</button>
+                <button className="btn btn-custom filter__btn-apply" type="submit">Apply</button>
+                <button className="btn btn-custom filter__btn-reset" type="reset" onClick={ev => reset(formik.values)}>Reset</button>
             </form>
         </FormikProvider>
     </div>

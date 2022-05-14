@@ -2,21 +2,21 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router";
 import { Link } from "react-router-dom";
-import { PAGE_LIMIT } from "../../consts/consts";
-import {  getSubscribeNews, getTotalCountSubscribeNews, getUser } from "../../selectors/selectors";
-import { newsFetchAction } from "../../store/news/newsAction";
-import { fetchSubscribeNewsAction } from "../../store/subscribeNews/SubscribeNewsAction";
-import { Store } from "../../store/Types";
-import { meUpdateAction } from "../../store/user/actionUser";
-import { NewsInfo, NewsRequest } from "../../types/News";
-import { UserInfo } from "../../types/User";
-import { fromUser } from "../../utils/Utils";
-import { Header } from "../header/Header";
-import { NotAuth } from "../helpers/NotAuth";
-import { Pagination } from "../pagination/Pagination";
-import { PaginationData } from "../pagination/PaginationTypes";
-import { NewCard } from "./newCard/NewCard";
-import { TagInput } from "./tagInput/TagInput";
+import { PAGE_LIMIT } from "../../../consts/consts";
+import {  getSubscribeNews, getTotalCountSubscribeNews, getUser } from "../../../selectors/selectors";
+import { newsFetchAction } from "../../../store/news/newsAction";
+import { fetchSubscribeNewsAction } from "../../../store/subscribeNews/SubscribeNewsAction";
+import { Store } from "../../../store/Types";
+import { fetchMeAction, meUpdateAction } from "../../../store/user/actionUser";
+import { NewsInfo, NewsRequest } from "../../../types/News";
+import { UserInfo } from "../../../types/User";
+import { fromUser } from "../../../utils/Utils";
+import { Header } from "../../header/Header";
+import { NotAuth } from "../../helpers/NotAuth";
+import { Pagination } from "../../pagination/Pagination";
+import { PaginationData } from "../../pagination/PaginationTypes";
+import { NewCard } from "../newCard/NewCard";
+import { TagInput } from "../tagInput/TagInput";
 
 export function NewsSubscribe() {
     const pageLimit = PAGE_LIMIT;
@@ -40,6 +40,7 @@ export function NewsSubscribe() {
             dispatch(fetchSubscribeNewsAction({ ...filter, tags: user.tags }));
 
         }
+        dispatch(fetchMeAction());
     }, [filter.tags]);
 
     useEffect(() => {
@@ -65,6 +66,7 @@ export function NewsSubscribe() {
     const onDelete = (name: string) => {
         if (user && user.tags !== null && user.tags !== undefined) {
             const newTags = [...user.tags?.filter(tag => tag != name)];
+            setFilter({...filter, tags: newTags})
             dispatch(meUpdateAction(fromUser({ ...user, tags: newTags })));
         }
     }
@@ -74,6 +76,7 @@ export function NewsSubscribe() {
                 return;
             };
             const newTags = [...user.tags, tagNew];
+            setFilter({...filter, tags: newTags})
             dispatch(meUpdateAction(fromUser({ ...user, tags: newTags })));
         }
     }

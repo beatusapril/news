@@ -1,0 +1,18 @@
+.create-news{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.create-news__header{
+    text-align: center;
+}
+
+.create-news__date{
+    width: 200px;
+}
+
+.news-create__button-panel{
+    margin-left: auto;
+    margin-top: 10px;
+    width: 10%;
+}

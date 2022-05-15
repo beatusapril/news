@@ -32,10 +32,8 @@ export const news = {
         {
             'in': 'query',
             'name': 'tags',
-            'type': 'array',
-            'items': {
-                'type': 'string'
-            }
+            'type': 'string',
+            'description': 'tags separated by comma, example: "news, games"',
         },
         {
             'in': 'query',
@@ -61,6 +59,23 @@ export const news = {
             'in': 'query',
             'name': 'limit',
             'type': 'number',
+        },
+        {
+            'in': 'query',
+            'name': 'field',
+            'type': 'string',
+            'enum': [
+                'publicationDate',
+                'header',
+            ]
+        },{
+            'in': 'query',
+            'name': 'order',
+            'type': 'string',
+            'order': [
+                'asc',
+                'desc',
+            ]
         },
     ],
     responses: {

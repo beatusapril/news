@@ -18,13 +18,14 @@ export function NewCard(props: NewCardProps) {
 
     function resetUpdate() {
         setIsEdit(false)
+        props.reload()
     }
     return <div className="news-card">
         {isEdit && <NewsCardUpdate news={props.card} resetUpdate={resetUpdate} />}
         {!isEdit && <div>
             <div className="news-card-author-name">{props.card.publicationDate + ' ' + props.card.authorFirstName + ' ' + props.card.authorLastName + ' ' + props.card.authorNickname}</div>
             <h6>{props.card.header}</h6>
-            <textarea readOnly={true} name="" id="" rows={5} className="news-card__description">{props.card.description}</textarea>
+            <textarea readOnly={true} name="" id="" rows={5} className="news-card__description" value={props.card.description}></textarea>
             <div>{props.card.tags.map(tag => <div className="tag-view">{tag}</div>)}</div>
             <div className="btn-panel">{user?.role != READER && user?.id === props.card.author &&
              <button className="btn-custom-no-active news-card__edit-btn" onClick={onEdit}>Edit</button>}</div></div>}

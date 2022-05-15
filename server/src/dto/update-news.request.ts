@@ -5,7 +5,7 @@ export default class UpdateNewsRequest {
   description: string
   tags: string[]
   state: State
-  publicationDate?: Date
+  publicationDate?: string
 
   constructor(props: UpdateNewsRequest) {
     this.header = props.header

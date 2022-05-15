@@ -4,7 +4,7 @@ import { serverUrl } from "./server";
 const getNewsUrl = (req: NewsRequest) => {
     let queryParams: string[] = []
     if (req.tags && req.tags.length !== 0) {
-        queryParams.push(`tags=${req.tags}`);
+        queryParams.push(`tags=${req.tags.join(',')}`);
     }
     if (req.author) {
         queryParams.push(`author=${req.author}`);
@@ -55,7 +55,7 @@ export async function getNewsApi(token: string, req: NewsRequest) {
 
 export async function createNewsApi(token: string, req: NewsCreateRequest) {
     //2022-05-07
-    const objectFormat = {...req, publicationDate: new Date(req.publicationDate).toDateString()}
+    const objectFormat = {...req, publicationDate: req.publicationDate}
     const result = await fetch(newsCreateUrl, {
         method: 'PUT',
         headers: {

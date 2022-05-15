@@ -109,7 +109,7 @@ export function NewsCardUpdate(props: NewsCardUpdateProps){
                     <TagInput tags={tags} onDelete={onDelete} addTag={addTag}/>
                     <div className="news-card-update__button-panel">
                     <button type="submit" disabled={!(formik.isValid)} className="btn-custom news-card-update_offset">Submit</button>
-                    <button type="button" className="btn-custom-no-active">Cancel</button>
+                    <button type="button" className="btn-custom-no-active" onClick={onCancel}>Cancel</button>
                     </div>
                 </form>
             </FormikProvider>

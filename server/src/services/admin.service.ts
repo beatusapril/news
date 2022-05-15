@@ -36,9 +36,10 @@ export default class AdminService {
   }
 
   public static updateNews(id: number, news: UpdateNewsRequest) {
+    let date = news.publicationDate ? new Date(news.publicationDate) : null;
     const oldNews = Storage.news.find(item => item.id===id)
     oldNews.tags = new Set(news.tags)
-    oldNews.publicationDate = news.publicationDate ?? (oldNews.state === State.draft && news.state === State.published && new Date())
+    oldNews.publicationDate = date ?? (oldNews.state === State.draft && news.state === State.published && new Date())
     oldNews.state = news.state
     oldNews.header = news.header
     oldNews.description = news.description

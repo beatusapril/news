@@ -13,6 +13,7 @@ import { Header } from "../../header/Header";
 import { TagRowFilter } from "../filter/Filter";
 import DatePicker from "react-datepicker";
 import { TagInput } from "../tagInput/TagInput";
+import '../newCreate/NewsCreate.css'
 
 
 export function NewsCreate() {
@@ -95,40 +96,44 @@ export function NewsCreate() {
 
     return <div>
         <Header />
-        <div>
-            Create news
+        <div className="wrapper">
+            <div className="create-news">
+            <h3 className="create-news__header">Create news</h3>
             <FormikProvider value={formik}>
                 <form onSubmit={formik.handleSubmit} >
-                    <div className="text-field">
-                        <label htmlFor="date" className="text-field__label">Publication Date</label>
-                        <input type="date" name="date" id="date" onChange={date => formik.setFieldValue("publicationDate", date.target.value)} onBlur={formik.handleBlur}></input>
+                    <div className="form-group">
+                        <label htmlFor="date">Publication Date</label>
+                        <input type="datetime-local" className="form-control create-news__date" name="date" id="date" onChange={date => formik.setFieldValue("publicationDate", date.target.value)} onBlur={formik.handleBlur}></input>
                         {formik.errors.publicationDate && formik.touched.publicationDate && <div className="text-field__message">{formik.errors.header}</div>}
                     </div>
-                    <div className="text-field">
-                        <label htmlFor="header" className="text-field__label">Header</label>
-                        <Field className="text-field__input" label="Header" type="text"
+                    <div className="form-group">
+                        <label htmlFor="header">Header</label>
+                        <Field className="form-control" label="Header" type="text"
                             name="header" id="header" onChange={formik.handleChange} value={formik.values.header} onBlur={formik.handleBlur}>
                         </Field>
                         {formik.errors.header && formik.touched.header && <div className="text-field__message">{formik.errors.header}</div>}
                     </div>
-                    <div className="text-field">
-                        <label className="text-field__label" htmlFor="description">Description</label>
-                        <textarea name="description" onChange={formik.handleChange} value={formik.values.description} onBlur={formik.handleBlur}>
+                    <div className="form-group">
+                        <label htmlFor="description">Description</label>
+                        <textarea className="form-control" name="description" onChange={formik.handleChange} rows={5} value={formik.values.description} onBlur={formik.handleBlur}>
                             {formik.values.description}
                         </textarea>
                         {formik.errors.description && formik.touched.description && <div className="text-field__message">{formik.errors.description}</div>}
                     </div>
-                    <div className="text-field">
+                    <div className="form-group">
                         <label className="text-field__label" htmlFor="state">State</label>
-                        <Field className="text-field__input" id="state" as="select" name="state" value={formik.values.state} onChange={formik.handleChange} onBlur={formik.handleBlur}>
+                        <Field className="form-control" id="state" as="select" name="state" value={formik.values.state} onChange={formik.handleChange} onBlur={formik.handleBlur}>
                             <option value={NewState.published}>Published</option>
                             <option value={NewState.draft}>Draft</option>
                         </Field>
                     </div>
                     <TagInput tags={newInfo.tags} onDelete={onDelete} addTag={addTag}/>
-                    <button type="submit" disabled={!(formik.isValid)}>Submit</button>
+                    <div className="news-create__button-panel">
+                    <button type="submit" className="btn btn-custom" disabled={!(formik.isValid)}>Submit</button>
+                    </div>
                 </form>
             </FormikProvider>
+            </div>
         </div>
     </div>
 }

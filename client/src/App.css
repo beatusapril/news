@@ -26,6 +26,7 @@ a:hover{
   --tag-color: rgb(249, 220, 240);
   --current-link-color: rgb(218, 215, 215);
   --hover-nav-color:rgb(159, 153, 153);
+  --page-link-active: rgb(98, 196, 89);
 }
 
 .tag-wrapper{

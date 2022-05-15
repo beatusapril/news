@@ -14,8 +14,7 @@ export default class Storage {
     private static userIndex: number = 1
 
     public static get publishedNews() {
-        return Storage.news.filter(n => n.state === State.published )
-            //&& n.publicationDate < new Date())
+        return Storage.news.filter(n => n.state === State.published && new Date(n.publicationDate) < new Date())
     }
 
     public static addNews(item: News) {

@@ -1,0 +1,8 @@
+.page-item.active .page-link {
+    background-color: var(--page-link-active);
+    border-color: var(--page-link-active);
+}
+
+.page-link {
+    color: var(--page-link-active);
+}

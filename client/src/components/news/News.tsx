@@ -68,6 +68,10 @@ export function News() {
         dispatch(newsFetchAction(filterNew));
     }
 
+    const onReload = () => {
+        dispatch(newsFetchAction(filter));
+    }
+
     return <>{!user && <NotAuth />}
         <Header />
         {user && <div className="wrapper">
@@ -75,7 +79,7 @@ export function News() {
                 <Filter onSubmit={onSubmit} onReset={onReset} />
                 <div className="news-block">
                     <div className="news-block-center">
-                        {news && news.map(newInfo => <NewCard card={newInfo} />)}
+                        {news && news.map(newInfo => <NewCard card={newInfo} reload={onReload}/>)}
                     </div>
                     <div className="pagination">
                         <Pagination totalRecords={totalCount} pageLimit={pageLimit} pageNeighbours={1} onPageChanged={onPageChanged} />

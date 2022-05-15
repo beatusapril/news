@@ -1,5 +1,6 @@
-import { Component, Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { PaginationProps } from "./PaginationTypes";
+import '../pagination/Pagination.css'
 
 const LEFT_PAGE = 'LEFT';
 const RIGHT_PAGE = 'RIGHT';
@@ -21,8 +22,6 @@ const range = (from: number, to: number, step = 1): any => {
 }
 
 export function Pagination(props: PaginationProps) {
-    //pageLimit: number;
-    //totalRecords: number;
     const [currentPage, setCurrentPage] = useState(1)
     const [pageNeighbours, setPageNeighbours] = useState(0);
     const [totalPages, setTotalPages] = useState(0);

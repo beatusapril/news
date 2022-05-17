@@ -1,6 +1,6 @@
 import { all} from 'redux-saga/effects'
 import { watcherFetchMe, watcherLogin, watcherLogout, watcherMeUpdate } from './user/userSaga'
-import { watcherCreateNews, watcherFetchNews, watcherUpdateNews } from './news/newsSaga'
+import { watcherCreateNews, watcherDeleteNews, watcherFetchNews, watcherReadNews, watcherUpdateNews } from './news/newsSaga'
 import { watcherSignUp } from './signup/signUpSaga'
 import { watcherSaveTags, watcherTags } from './tags/TagsSaga'
 import { watcherEditRole, watcherUsers } from './users/usersSaga'
@@ -20,6 +20,8 @@ export default function* rootSaga() {
         watcherCreateNews(),
         watcherMeUpdate(),
         watcherFetchSubscribeNews(),
-        watcherUpdateNews()
+        watcherUpdateNews(),
+        watcherReadNews(),
+        watcherDeleteNews()
     ])
 }

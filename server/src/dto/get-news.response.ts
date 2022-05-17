@@ -8,6 +8,7 @@ export default class NewsResponse {
   authorLastName?: string
   publicationDate?: Date
   author: number
+  isRead: boolean
 
   constructor(props: NewsResponse) {
     this.header = props.header
@@ -19,5 +20,6 @@ export default class NewsResponse {
     this.id = props.id
     this.publicationDate = props.publicationDate
     this.author = props.author
+    this.isRead = props.isRead
   }
 }

@@ -27,6 +27,8 @@ a:hover{
   --current-link-color: rgb(218, 215, 215);
   --hover-nav-color:rgb(159, 153, 153);
   --page-link-active: rgb(98, 196, 89);
+  --read-news: rgb(218, 215, 215);
+  --grey: rgb(218, 215, 215);
 }
 
 .tag-wrapper{
@@ -65,4 +67,18 @@ a:hover{
   margin-right: 5px;
   padding: 5px;
   font-size: 10px;
+}
+
+.btn-pink{
+  background: rgb(249, 220, 240);
+  border: 0;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.btn-grey{
+  background: var(--grey);
+  border: 0;
+  padding: 5px;
+  border-radius: 5px;
 }

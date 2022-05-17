@@ -18,7 +18,9 @@ router.get('/my', (req, res) => {
 })
 
 router.get('/all', (req, res) => {
-  const news = NewsService.getAllNews(true)
+  const token = req.header('token')
+  const authData = AuthService.checkAuthorized(token)
+  const news = NewsService.getAllNews(authData, true)
   res.status(200).json(news)
 })
 
@@ -31,7 +33,7 @@ router.post<{}, any, any, {ids: string}>('/read', (req, res) => {
   const token = req.header('token')
   const authData = AuthService.checkAuthorized(token)
   NewsService.updateReadNews(req.body.ids, authData)
-  res.status(204)
+  res.status(204).json({created: true})
 })
 
 

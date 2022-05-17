@@ -11,7 +11,9 @@ export interface NewsInfo{
     authorFirstName: string,
     authorLastName: string,
     publicationDate: string,
-    author: number
+    author: number,
+    isRead: boolean,
+    state: NewState
 }
 
 export interface NewsWrapper{
@@ -49,4 +51,8 @@ export interface NewsUpdateRequest{
     tags: string[]
     state: NewState
     publicationDate: string
+}
+
+export interface ReadNews{
+    ids: number[]
 }

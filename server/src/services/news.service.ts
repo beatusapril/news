@@ -8,7 +8,8 @@ import Storage from './storage'
 import createHttpError from 'http-errors'
 
 export default class NewsService {
-  public static getAllNews(publishedOnly?: boolean) {
+  public static getAllNews(authData: AuthData, publishedOnly?: boolean) {
+    const userMe = Storage.users.get(authData.userId)
     const newsArray =
       publishedOnly ?
         Storage.publishedNews :
@@ -20,7 +21,8 @@ export default class NewsService {
         authorNickname: user.nickname,
         authorFirstName: user.firstName,
         authorLastName: user.lastName,
-        tags: [...item.tags]
+        tags: [...item.tags],
+        isRead: user.readNewsList.has(item.id)
       })
     })
     return news
@@ -39,7 +41,8 @@ export default class NewsService {
           authorNickname: user.nickname,
           authorFirstName: user.firstName,
           authorLastName: user.lastName,
-          tags: [...item.tags]
+          tags: [...item.tags],
+          isRead: user.readNewsList.has(item.id)
         })
       })
     return news
@@ -59,6 +62,7 @@ export default class NewsService {
   }
 
   public static getNewsFilteredPaginated(req: GetNewsRequest, authData: AuthData) {
+    const userMe = Storage.users.get(authData.userId)
     let news = Storage.publishedNews
     if (req.tags) {
       let tagsArray = req.tags.split(',');
@@ -86,13 +90,14 @@ export default class NewsService {
       }
       return sign
     }).slice(offset, offset + limit).map(item => {
-      const user = Storage.users.get(item.author)
+      const user = Storage.users.get(item.author);
       return new NewsResponse({
         ...item,
         authorNickname: user.nickname,
         authorFirstName: user.firstName,
         authorLastName: user.lastName,
-        tags: [...item.tags]
+        tags: [...item.tags],
+        isRead: userMe.readNewsList.has(item.id)
       })
     })
     return { list: res, offset, limit, total: news.length }

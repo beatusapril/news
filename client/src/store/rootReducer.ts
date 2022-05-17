@@ -1,8 +1,6 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import { userInfo } from "os";
 import { loginReducer } from "./user/userReducer";
 import { newsReducer } from "./news/newsReducer";
-import { signUpReducer } from "./signup/signUpReducer";
 import { tagsReducer } from "./tags/TagsReducer";
 import { Store } from "./Types";
 import { usersReducer } from "./users/usersReducer";

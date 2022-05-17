@@ -25,9 +25,27 @@
     display: inline-block;
     height: 20px;
     font-size: 10px;
+    margin-right: 10px;
+
 }
 
 .btn-panel{
-    width: 20%;
+    width: 40%;
     margin-left: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-mark-as-read{
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.news-read{
+    background: var(--read-news);
+}
+
+.news-card__btn-delete{
+    margin-right: 10px;
+    display: inline-block;
 }

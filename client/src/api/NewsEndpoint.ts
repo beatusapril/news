@@ -1,4 +1,4 @@
-import { NewsCreateRequest, NewsRequest, NewsUpdateRequest } from "../types/News";
+import { NewsCreateRequest, NewsRequest, NewsUpdateRequest, ReadNews } from "../types/News";
 import { serverUrl } from "./server";
 
 const getNewsUrl = (req: NewsRequest) => {
@@ -35,6 +35,8 @@ const getNewsUrl = (req: NewsRequest) => {
 }
 const newsCreateUrl = `${serverUrl}/news/`
 const newsUpdateUrl = (id: number) => `${serverUrl}/news/${id}`
+const markAsReadUrl = `${serverUrl}/news/read`
+const deleteNewsUrl = (id: number) => `${serverUrl}/admin/news/${id}`
 
 export async function getNewsApi(token: string, req: NewsRequest) {
     const result = await fetch(getNewsUrl(req), {
@@ -54,8 +56,7 @@ export async function getNewsApi(token: string, req: NewsRequest) {
 }
 
 export async function createNewsApi(token: string, req: NewsCreateRequest) {
-    //2022-05-07
-    const objectFormat = {...req, publicationDate: req.publicationDate}
+    const objectFormat = { ...req, publicationDate: req.publicationDate }
     const result = await fetch(newsCreateUrl, {
         method: 'PUT',
         headers: {
@@ -63,7 +64,7 @@ export async function createNewsApi(token: string, req: NewsCreateRequest) {
             'Access-Control-Allow-Origin': '*',
             'token': token
         },
-        body: JSON.stringify(objectFormat )
+        body: JSON.stringify(objectFormat)
     })
         .then((response) => response.json())
         .catch((error) => {
@@ -89,4 +90,33 @@ export async function updateNewsApi(token: string, req: NewsUpdateRequest) {
         });
 
     return result;
+}
+
+export async function markAsReadApi(token: string, req: ReadNews) {
+    await fetch(markAsReadUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'token': token
+        },
+        body: JSON.stringify(req)
+    })
+        .catch((error) => {
+            throw error;
+        });
+}
+
+export async function deleteNewsApi(token: string, req: number) {
+    await fetch(deleteNewsUrl(req), {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'token': token
+        }
+    })
+        .catch((error) => {
+            throw error;
+        });
 }

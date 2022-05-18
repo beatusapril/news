@@ -29,7 +29,7 @@ export function fromNewsInfo(news: NewsInfo): NewsUpdateRequest{
         header: news.header,
         description: news.description,
         tags: news.tags,
-        state: NewState.published,
+        state: news.state,
         publicationDate: news.publicationDate};
    }
 

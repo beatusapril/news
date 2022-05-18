@@ -28,6 +28,7 @@ export function NewsSubscribe() {
         author: null,
         header: null,
         offset: 0,
+        onlyDraft: null,
         limit: pageLimit
     });
     const totalCount = useSelector<Store, number>(state => getTotalCountSubscribeNews(state));
@@ -105,7 +106,7 @@ export function NewsSubscribe() {
                 </div>
                 <div className="news-block">
                     <div className="news-block-center">
-                        {news && news.map(newInfo => <NewCard card={newInfo} reload={onReload}/>)}
+                        {news && news.map(newInfo => <NewCard card={newInfo} reload={onReload} draft={false}/>)}
                     </div>
                     <div>
                         <Pagination totalRecords={totalCount} pageLimit={pageLimit} pageNeighbours={1} onPageChanged={onPageChanged} />
@@ -115,6 +116,7 @@ export function NewsSubscribe() {
                     <ul className="news-link-block__navigation-menu">
                         <li><Link className="navigation-menu__item" to="/news">News</Link></li>
                         <li><Link className="navigation-menu__item navigation-menu__current" to="/news-subscribe">News subscribe</Link></li>
+                        <li><Link className="navigation-menu__item" to="/drafts">Drafts</Link></li>
                     </ul>
                 </div>
             </div>

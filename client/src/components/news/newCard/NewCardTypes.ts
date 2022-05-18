@@ -2,5 +2,6 @@ import { NewsInfo } from "../../../types/News";
 
 export interface NewCardProps{
     card: NewsInfo,
-    reload: () => void 
+    reload: () => void ,
+    draft: boolean
 }

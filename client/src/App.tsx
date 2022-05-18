@@ -18,6 +18,7 @@ import { NewsCreate } from './components/news/newCreate/NewsCreate';
 import { NewsSubscribe } from './components/news/newsSubscribe/NewsSubscribe';
 import { Profile } from './components/profile/Profile';
 import "./normalize.css"
+import { Drafts } from './components/news/drafts/Drafts';
 
 function App() {
   const user = useSelector<Store, UserInfo | null>(state => getUser(state));
@@ -34,6 +35,7 @@ function App() {
           <Route path='/news/create' element={<NewsCreate />}></Route>
           <Route path='/news-subscribe' element={<NewsSubscribe />}></Route>
           <Route path='/profile' element={<Profile/>}></Route>
+          <Route path='/drafts' element={<Drafts/>}></Route>
         </Routes>
       </React.Fragment>
     </>

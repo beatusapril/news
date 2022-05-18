@@ -45,7 +45,7 @@ export function NewCard(props: NewCardProps) {
             <div className="btn-panel">
                 {user?.role != READER && user?.id === props.card.author &&
                 <button className="btn-custom-no-active news-card__edit-btn" onClick={onEdit}>Edit</button>}
-                <button className="btn-pink btn-mark-as-read" onClick={markAsRead}>Mark as read</button>
+                {!props.draft && <button className="btn-pink btn-mark-as-read" onClick={markAsRead}>Mark as read</button>}
                 {(user?.role === ADMIN) && <button className="btn-custom news-card__btn-delete" onClick={onDelete}>Delete</button>}
             </div>
         </div>}

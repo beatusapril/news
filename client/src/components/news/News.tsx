@@ -24,6 +24,7 @@ export function News() {
     const [filter, setFilter] = useState<NewsRequest>({
         tags: null,
         onlyNew: null,
+        onlyDraft: null,
         author: null,
         header: null,
         offset: 0,
@@ -79,7 +80,7 @@ export function News() {
                 <Filter onSubmit={onSubmit} onReset={onReset} />
                 <div className="news-block">
                     <div className="news-block-center">
-                        {news && news.map(newInfo => <NewCard card={newInfo} reload={onReload}/>)}
+                        {news && news.map(newInfo => <NewCard card={newInfo} reload={onReload} draft={false} />)}
                     </div>
                     <div className="pagination">
                         <Pagination totalRecords={totalCount} pageLimit={pageLimit} pageNeighbours={1} onPageChanged={onPageChanged} />
@@ -90,6 +91,7 @@ export function News() {
                         <ul className="news-link-block__navigation-menu">
                             <li className="navigation-menu__item navigation-menu__current"><Link to="/news">News</Link></li>
                             <li className="navigation-menu__item"><Link to="/news-subscribe">News subscribe</Link></li>
+                            <li><Link className="navigation-menu__item" to="/drafts">Drafts</Link></li>
                         </ul>
                     </div>
                     {(user.role === ADMIN || user.role === WRITER) && <div><Link to="/news/create" className="news-link-block_add-news">Add news</Link></div>}

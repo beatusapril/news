@@ -1,3 +1,4 @@
+
 export default class NewsResponse {
   id: number
   header: string
@@ -9,6 +10,7 @@ export default class NewsResponse {
   publicationDate?: Date
   author: number
   isRead: boolean
+  state: string
 
   constructor(props: NewsResponse) {
     this.header = props.header
@@ -21,5 +23,6 @@ export default class NewsResponse {
     this.publicationDate = props.publicationDate
     this.author = props.author
     this.isRead = props.isRead
+    this.state = props.state
   }
 }

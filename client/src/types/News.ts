@@ -30,6 +30,7 @@ export interface NewsResponse{
 export interface NewsRequest{
     tags: string[] | null,
     onlyNew: boolean | null,
+    onlyDraft: boolean | null,
     author: string | null,
     header: string | null,
     offset: number,

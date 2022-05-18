@@ -24,6 +24,7 @@ export function Filter(props: FilterProps) {
         onlyNew: false,
         author: null,
         header: null,
+        onlyDraft: null,
         offset: 0,
         limit: 0
     })
@@ -63,6 +64,7 @@ export function Filter(props: FilterProps) {
             onlyNew: false,
             author: null,
             header: null,
+            onlyDraft: false,
             offset: 0,
             limit: 0
         });
@@ -71,6 +73,7 @@ export function Filter(props: FilterProps) {
             onlyNew: false,
             author: null,
             header: null,
+            onlyDraft: false,
             offset: 0,
             limit: 0
         })

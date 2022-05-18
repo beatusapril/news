@@ -63,7 +63,7 @@ export default class NewsService {
 
   public static getNewsFilteredPaginated(req: GetNewsRequest, authData: AuthData) {
     const userMe = Storage.users.get(authData.userId)
-    let news = Storage.publishedNews
+    let news = req.onlyDraft ? Storage.drafts(authData) : Storage.publishedNews
     if (req.tags) {
       let tagsArray = req.tags.split(',');
       news = news.filter(item => tagsArray.find(tag => item.tags.has(tag)))
@@ -97,7 +97,8 @@ export default class NewsService {
         authorFirstName: user.firstName,
         authorLastName: user.lastName,
         tags: [...item.tags],
-        isRead: userMe.readNewsList.has(item.id)
+        isRead: userMe.readNewsList.has(item.id),
+        state: item.state === State.published ? 'published' : 'draft'
       })
     })
     return { list: res, offset, limit, total: news.length }

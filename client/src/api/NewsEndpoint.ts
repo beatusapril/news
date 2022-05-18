@@ -15,6 +15,9 @@ const getNewsUrl = (req: NewsRequest) => {
     if (req.onlyNew) {
         queryParams.push(`onlyNew=${req.onlyNew}`);
     }
+    if (req.onlyDraft) {
+        queryParams.push(`onlyDraft=${req.onlyDraft}`);
+    }
     if (req.limit) {
         queryParams.push(`limit=${req.limit}`);
     }

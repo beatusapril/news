@@ -10,3 +10,5 @@ export const getNews = (state: Store): NewsInfo[] => state.news.list;
 export const getTotalCountNews = (state: Store): number => state.news.total;
 export const getSubscribeNews = (state: Store): NewsInfo[] => state.subscribeNews.list;
 export const getTotalCountSubscribeNews = (state: Store): number => state.subscribeNews.total;
+export const getDrafts = (state: Store): NewsInfo[] => state.drafts.list;
+export const getTotalCountDrafts = (state: Store): number => state.drafts.total;

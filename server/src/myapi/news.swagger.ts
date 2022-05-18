@@ -52,6 +52,11 @@ export const news = {
         },
         {
             'in': 'query',
+            'name': 'onlyDraft',
+            'type': 'boolean',
+        },
+        {
+            'in': 'query',
             'name': 'offset',
             'type': 'number',
         },

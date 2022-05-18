@@ -6,6 +6,7 @@ export interface NewsFilter {
   onlyNew?: boolean
   author?: number
   header?: string
+  onlyDraft?: boolean
   offset?: number
   limit?: number
 }

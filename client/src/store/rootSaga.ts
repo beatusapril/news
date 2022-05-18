@@ -5,6 +5,7 @@ import { watcherSignUp } from './signup/signUpSaga'
 import { watcherSaveTags, watcherTags } from './tags/TagsSaga'
 import { watcherEditRole, watcherUsers } from './users/usersSaga'
 import { watcherFetchSubscribeNews } from './subscribeNews/SubscribeNewsSaga'
+import { watcherDrafts } from './drafts/draftsSaga'
 
 export default function* rootSaga() {
     yield all([
@@ -22,6 +23,7 @@ export default function* rootSaga() {
         watcherFetchSubscribeNews(),
         watcherUpdateNews(),
         watcherReadNews(),
-        watcherDeleteNews()
+        watcherDeleteNews(),
+        watcherDrafts()
     ])
 }

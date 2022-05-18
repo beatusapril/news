@@ -17,6 +17,10 @@ export default class Storage {
         return Storage.news.filter(n => n.state === State.published && new Date(n.publicationDate) < new Date())
     }
 
+    public static drafts(auth: AuthData) {
+        return Storage.news.filter(n => n.state === State.draft && n.author === auth.userId)
+    }
+
     public static addNews(item: News) {
         const id = this.newsIndex++
         this.news.push({...item, id})
@@ -70,6 +74,22 @@ export default class Storage {
             favor of legislation to bring in the euro. One lawmaker abstained in the 151-member parliament.`,
             tags: new Set(['general']),
             state: State.published,
+            publicationDate: new Date("2022-05-13"),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Draft news',
+            description: ` Russia’s state-owned gas supplier has said it will cut shipments to Europe through a major pipeline, sending prices surging and reinforcing President Vladimir Putin’s willingness to use energy as a weapon against the EU`,
+            tags: new Set(['politics']),
+            state: State.draft,
+            publicationDate: new Date("2022-05-13"),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Draft news',
+            description: `draft news`,
+            tags: new Set(['general']),
+            state: State.draft,
             publicationDate: new Date("2022-05-13"),
             author: id
         })))
@@ -155,6 +175,22 @@ Whichever way you cut it, $1.05 is an astonishingly low value for the Euro. For 
             tags: new Set(['general', 'politics']),
             state: State.published,
             publicationDate: new Date("2022-05-08"),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Draft news',
+            description: ` Russia’s state-owned gas supplier has said it will cut shipments to Europe through a major pipeline, sending prices surging and reinforcing President Vladimir Putin’s willingness to use energy as a weapon against the EU`,
+            tags: new Set(['politics']),
+            state: State.draft,
+            publicationDate: new Date("2022-05-13"),
+            author: id
+        })))
+        news.push(this.addNews(new News({
+            header: 'Draft news',
+            description: `draft news`,
+            tags: new Set(['general']),
+            state: State.draft,
+            publicationDate: new Date("2022-05-13"),
             author: id
         })))
         this.users.set(

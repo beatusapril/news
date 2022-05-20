@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ADMIN, READER, WRITER } from "../../../consts/consts";
+import { ADMIN, READER } from "../../../consts/consts";
 import { getUser } from "../../../selectors/selectors";
 import { Store } from "../../../store/Types";
 import { UserInfo } from "../../../types/User";
@@ -8,7 +8,6 @@ import { NewCardProps } from "./NewCardTypes";
 import { NewsCardUpdate } from "./newsCardUpdate/NewsCardUpdate";
 import '../newCard/NewCard.css'
 import { newsDelete, newsMarkAsReadAction } from "../../../store/news/newsAction";
-import { NewState } from "../../../types/News";
 
 export function NewCard(props: NewCardProps) {
     const [isEdit, setIsEdit] = useState(false);

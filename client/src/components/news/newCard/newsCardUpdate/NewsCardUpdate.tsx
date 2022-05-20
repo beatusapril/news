@@ -1,7 +1,7 @@
 import { Field, FormikProvider, useFormik } from "formik";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { READER, TEXTAREA_CONTENT_ROWS } from "../../../../consts/consts";
+import { useDispatch } from "react-redux";
+import { TEXTAREA_CONTENT_ROWS } from "../../../../consts/consts";
 import { newsUpdateAction } from "../../../../store/news/newsAction";
 import { NewState, NewsUpdateRequest } from "../../../../types/News";
 import { fromNewsInfo } from "../../../../utils/Utils";
@@ -18,9 +18,6 @@ export function NewsCardUpdate(props: NewsCardUpdateProps){
             errors.description = 'Required'
             return;
         }
-        /* if (values.description.length < 150) {
-            errors.description = 'Length must be more 150 symbols'
-        } */
     }
 
     useEffect(()=> setTags([...props.news.tags]), [props.news.tags])
@@ -82,7 +79,7 @@ export function NewsCardUpdate(props: NewsCardUpdateProps){
                 <form onSubmit={formik.handleSubmit} >
                     <div>
                         <label htmlFor="date">Publication Date</label>
-                        <input type="date" name="date" id="date" onChange={date => formik.setFieldValue("publicationDate", date.target.value)} onBlur={formik.handleBlur}></input>
+                        <input type="datetime-local" value={formik.values.publicationDate} name="date" id="date" onChange={date => formik.setFieldValue("publicationDate", date.target.value)} onBlur={formik.handleBlur}></input>
                         {formik.errors.publicationDate && formik.touched.publicationDate && <div className="invalid-error">{formik.errors.header}</div>}
                     </div>
                     <div>

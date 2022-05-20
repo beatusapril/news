@@ -11,7 +11,6 @@ import { Header } from "../../header/Header";
 import { Pagination } from "../../pagination/Pagination";
 import { PaginationData } from "../../pagination/PaginationTypes";
 import { NewCard } from "../newCard/NewCard";
-import { TagInput } from "../tagInput/TagInput";
 
 export function Drafts(){
     const user = useSelector<Store, UserInfo | null>(state => getUser(state));
@@ -31,7 +30,7 @@ export function Drafts(){
 
     useEffect(() => {
             dispatch(fetchDraftsNewsAction({ ...filter}));
-    }, []);
+    }, [dispatch, filter]);
 
     const onPageChanged = (data: PaginationData) => {
         const { currentPage, totalPages, pageLimit } = data;

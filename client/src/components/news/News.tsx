@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate } from "react-router";
 import { Link } from "react-router-dom";
 import { ADMIN, PAGE_LIMIT, WRITER } from "../../consts/consts";
 import { getNews, getTotalCountNews, getUser } from "../../selectors/selectors";
@@ -33,7 +32,7 @@ export function News() {
     const totalCount = useSelector<Store, number>(state => getTotalCountNews(state));
     const news = useSelector<Store, NewsInfo[]>(state => getNews(state));
     const dispatch = useDispatch();
-    useEffect(() => { dispatch(newsFetchAction(filter)) }, [])
+    useEffect(() => { dispatch(newsFetchAction(filter)) }, [dispatch, filter])
 
     const onPageChanged = (data: PaginationData) => {
         const { currentPage, totalPages, pageLimit } = data;

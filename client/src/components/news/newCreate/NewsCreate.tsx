@@ -1,17 +1,14 @@
 import { Field, FormikProvider, useFormik } from "formik";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router";
 import { READER } from "../../../consts/consts";
-import { getTags, getUser } from "../../../selectors/selectors";
+import { getUser } from "../../../selectors/selectors";
 import { newsCreate } from "../../../store/news/newsAction";
-import { tagsFetchAction } from "../../../store/tags/TagsAction";
 import { Store } from "../../../store/Types";
 import { NewsCreateRequest, NewState } from "../../../types/News";
 import { UserInfo } from "../../../types/User";
 import { Header } from "../../header/Header";
-import { TagRowFilter } from "../filter/Filter";
-import DatePicker from "react-datepicker";
 import { TagInput } from "../tagInput/TagInput";
 import '../newCreate/NewsCreate.css'
 

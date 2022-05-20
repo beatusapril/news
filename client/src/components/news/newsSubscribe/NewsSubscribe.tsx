@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate } from "react-router";
 import { Link } from "react-router-dom";
 import { PAGE_LIMIT } from "../../../consts/consts";
 import { getSubscribeNews, getTotalCountSubscribeNews, getUser } from "../../../selectors/selectors";
-import { newsFetchAction } from "../../../store/news/newsAction";
 import { fetchSubscribeNewsAction, resetSubscribeNews } from "../../../store/subscribeNews/SubscribeNewsAction";
 import { Store } from "../../../store/Types";
 import { fetchMeAction, meUpdateAction } from "../../../store/user/actionUser";
@@ -45,7 +43,7 @@ export function NewsSubscribe() {
             dispatch(fetchSubscribeNewsAction({ ...filter, tags: user.tags }));
 
         }
-    }, []);
+    }, [dispatch, filter, user?.tags]);
 
     const onPageChanged = (data: PaginationData) => {
         const { currentPage, totalPages, pageLimit } = data;

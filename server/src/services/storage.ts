@@ -100,7 +100,7 @@ export default class Storage {
                 firstName: '-',
                 lastName: '-',
                 nickname: '-',
-                tags: [],
+                tags: ['politics', 'news'],
                 readNewsList: new Set<number>(),
                 myNewsList: []
             }
@@ -200,7 +200,7 @@ Whichever way you cut it, $1.05 is an astonishingly low value for the Euro. For 
                 firstName: 'Author',
                 lastName: 'Author',
                 nickname: 'author',
-                tags: [],
+                tags: ['news', 'art'],
                 readNewsList: new Set<number>(),
                 myNewsList: news
             }
@@ -223,7 +223,7 @@ Whichever way you cut it, $1.05 is an astonishingly low value for the Euro. For 
                 firstName: 'Reader',
                 lastName: 'reader',
                 nickname: 'reader',
-                tags: [],
+                tags: ['news', 'art'],
                 readNewsList: new Set<number>(),
                 myNewsList: []
             }

@@ -42,7 +42,7 @@ router.get<GetNewsRequest>('/', (req, res) => {
   const token = req.header('token')
   const authData = AuthService.checkAuthorized(token)
   const params = {tags: (req.query.tags as string), onlyNew: Boolean(req.query.onlyNew as string), 
-    author: +(req.query.author as string), 
+    author: (req.query.author as string), 
     header: req.query.header as string,
     onlyDraft: Boolean(req.query.onlyDraft as string),
     offset: +(req.query.offset as string),

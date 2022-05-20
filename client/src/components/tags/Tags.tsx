@@ -24,6 +24,7 @@ export function Tags() {
 
     function onCancel() {
         dispatch(tagsFetchAction());
+        setNewTag('');
     }
 
     function onSave() {
@@ -47,7 +48,9 @@ export function Tags() {
             }
             tags.push(newTag)
             dispatch(tagsUpdateAction([...tags]));
+            setNewTag('');
         }
+
     }
 
 
@@ -56,7 +59,7 @@ export function Tags() {
         <div className="wrapper">
             {tags.map(tag => <TagRow key={tag} name={tag} onUpdate={onUpdateTag} onDelete={onDelete}></TagRow>)}
             <div className="tags__input">
-                <input onChange={onChangeTag}></input>
+                <input value={newTag} onChange={onChangeTag}></input>
                 <button type="button" onClick={addTag} className="btn">Add tag</button>
             </div>
             <div className="tags__button-panel">

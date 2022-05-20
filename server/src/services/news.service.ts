@@ -73,7 +73,11 @@ export default class NewsService {
       news = news.filter(item => !user.readNewsList.has(item.id))
     }
     if (req.author) {
-      news = news.filter(item => item.author === req.author)
+      news = news.filter(item => {
+        const user = Storage.users.get(item.author);
+        return user.firstName.includes(req.author) || user.lastName.includes(req.author) 
+        || user.nickname.includes(req.author);
+      })
     }
     if (req.header) {
       news = news.filter(item => item.header.includes(req.header))

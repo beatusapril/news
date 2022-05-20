@@ -36,11 +36,17 @@ export function Profile() {
     const formik = useFormik({
         initialValues: getUserUpdateRequest(),
         validate: validate,
-        onSubmit: onSubmit
+        onSubmit: onSubmit,
+        onReset: onReset
     });
 
     function onSubmit(values: UserUpdateRequest) {
         dispatch(meUpdateAction(values))
+    };
+
+    function onReset(values: UserUpdateRequest) {
+        formik.setValues(getUserUpdateRequest());
+        formik.resetForm();
     };
 
     return <>
@@ -68,7 +74,10 @@ export function Profile() {
                             <Field className="form-control" label="lastName" type="tel"
                                 onChange={formik.handleChange} value={formik.values.phone} name="phone" id="phone" onBlur={formik.handleBlur}></Field>
                         </div>
+                        <div className="profile-btn-panel">
                         <button className="btn btn_offset"type="submit" disabled={!(formik.isValid)}>Save</button>
+                        <button className="btn btn_offset"type="reset" onClick={ev => onReset(formik.values)}>Reset</button>
+                        </div>
                     </form>
                 </FormikProvider></div></div>}
     </>

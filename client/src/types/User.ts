@@ -53,3 +53,8 @@ export interface UserUpdateRequest{
     showPhone: boolean
 }
 
+export interface EditRoleParams{
+    id: number,
+    role: Role
+}
+

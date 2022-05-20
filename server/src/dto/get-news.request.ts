@@ -4,7 +4,7 @@ export type GetNewsRequest = NewsFilter & NewsSortBy & Pagination
 export interface NewsFilter {
   tags?: string
   onlyNew?: boolean
-  author?: number
+  author?: string
   header?: string
   onlyDraft?: boolean
   offset?: number

@@ -1,4 +1,4 @@
-import { NewsInfo, NewState, NewsUpdateRequest } from "../types/News";
+import { NewsInfo,  NewsUpdateRequest } from "../types/News";
 import { Role, UserInfo, UserUpdateRequest } from "../types/User";
 
 export function fromNumberRole(number: number){

@@ -1,5 +1,5 @@
-import { FormikProvider, FormikState, FormikValues, useFormik } from "formik";
-import { useEffect, useRef, useState } from "react"
+import { FormikProvider, useFormik } from "formik";
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { getTags } from "../../../selectors/selectors";
 import { tagsFetchAction } from "../../../store/tags/TagsAction";
@@ -35,7 +35,7 @@ export function Filter(props: FilterProps) {
 
     useEffect(() => {
         dispatch(tagsFetchAction());
-    }, [])
+    }, [dispatch])
     const onDelete = (name: string) => {
         if (newRequest.tags !== null && newRequest.tags !== undefined) {
             const newTags = [...newRequest.tags?.filter(tag => tag != name)];
@@ -103,7 +103,7 @@ export function Filter(props: FilterProps) {
                 </div>
                 <div className="form-group">
                     <label className="only-new-label" htmlFor="onlyNew">Only new</label>
-                    <input  id="onlyNew" type="checkbox" value={formik.values.onlyNew ? String(formik.values.onlyNew) : ''}></input>
+                    <input  id="onlyNew" type="checkbox" value={String(formik.values.onlyNew)} onChange={formik.handleChange}></input>
                 </div>
                 <div>
                     <ul>

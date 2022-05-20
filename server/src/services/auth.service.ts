@@ -9,10 +9,12 @@ export default class AuthService {
       if ([...Storage.authorities.values()].find(item => item.login === login)) {
          throw new createHttpError.BadRequest('login already exists')
       }
+      const id =  Storage.addUserFromAuth(login);
       const authData = new AuthData({
          login,
          password,
-         role: Role.reader
+         role: Role.reader,
+         userId: id
       })
       Storage.authorities.set(`${login}@${password}`, authData)
    }

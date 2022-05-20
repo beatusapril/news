@@ -33,6 +33,23 @@ export default class Storage {
         return id
     }
 
+    public static addUserFromAuth(login: string){
+        const id = this.userIndex++;
+        this.users.set(
+            id,
+            {
+                id,
+                firstName: login,
+                lastName: '-',
+                nickname: '-',
+                tags: [],
+                readNewsList: new Set<number>(),
+                myNewsList: []
+            }
+        )
+        return id;
+    }
+
     public static init() {
         // add admin
         let id = Storage.userIndex++

@@ -7,5 +7,6 @@ export interface Store {
     tags: string[];
     news: NewsResponse;
     subscribeNews: NewsResponse;
-    drafts: NewsResponse
+    drafts: NewsResponse,
+    error: string 
 }

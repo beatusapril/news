@@ -2,7 +2,7 @@ import { Field, useFormik, FormikProvider } from 'formik';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';
-import { getUser } from '../../selectors/selectors';
+import { getError, getUser } from '../../selectors/selectors';
 import { login } from '../../store/user/actionUser';
 import { Store } from '../../store/Types';
 import { UserRequest } from '../../types/User';
@@ -12,6 +12,7 @@ import '../login/Login.css'
 export function Login() {
     const [formValues, setFormValues] = useState<UserRequest>({ login: '', password: '' });
     const user = useSelector<Store>(state => getUser(state));
+    const error = useSelector<Store, String>(state => getError(state));
     const dispatch = useDispatch();
 
     const validate = (values: UserRequest) => {
@@ -59,6 +60,7 @@ export function Login() {
                         onChange={formik.handleChange} value={formik.values.password} name="password" id="password" onBlur={formik.handleBlur}></Field>
                     {formik.errors.password && formik.touched.password && <div className="invalid-error">{formik.errors.password}</div>}
                 </div>
+                {error && <div className="invalid-error">{error}</div>}
                 <button type="submit" disabled={!(formik.isValid)} className="btn btn-login">Login</button>
             </form>
         </FormikProvider>

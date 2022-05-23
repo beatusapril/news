@@ -6,6 +6,7 @@ import { Store } from "./Types";
 import { usersReducer } from "./users/usersReducer";
 import { subscribeNewsReducer } from "./subscribeNews/SubscribeNewsReducer";
 import { draftsReducer } from "./drafts/draftsReducer";
+import { errorReducer } from "./error/errorReducer";
 
 export const initialState:Store = {
     user: null,
@@ -13,7 +14,8 @@ export const initialState:Store = {
     tags: [],
     news: {list: [], offset: 0, total: 0, limit: 0},
     subscribeNews: {list: [], offset: 0, total: 0, limit: 0},
-    drafts: {list: [], offset: 0, total: 0, limit: 0}
+    drafts: {list: [], offset: 0, total: 0, limit: 0},
+    error: ''
 }
 
 export const rootReducer = combineReducers({user: loginReducer, 
@@ -21,4 +23,6 @@ export const rootReducer = combineReducers({user: loginReducer,
     tags: tagsReducer,
     news: newsReducer,
     subscribeNews:subscribeNewsReducer,
-    drafts: draftsReducer});
+    drafts: draftsReducer,
+    error: errorReducer
+});

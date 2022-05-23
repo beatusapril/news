@@ -12,3 +12,4 @@ export const getSubscribeNews = (state: Store): NewsInfo[] => state.subscribeNew
 export const getTotalCountSubscribeNews = (state: Store): number => state.subscribeNews.total;
 export const getDrafts = (state: Store): NewsInfo[] => state.drafts.list;
 export const getTotalCountDrafts = (state: Store): number => state.drafts.total;
+export const getError = (state: Store): string => state.error;

@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import { EditRoleParams } from "../../types/User";
-import { editRoleApiCall,   getUsersApi} from "../../api/userEndpoint";
+import { editRoleApiCall,   getUsersApi} from "../../api/UserEndpoint";
 import {UserInfo } from "../../types/User";
 import { fetchUsersAction, fetchUsersFailure, fetchUsersSuccesfull } from "./usersAction";
 import { EDIT_ROLE, FETCH_USERS } from "./usersActionConsts";

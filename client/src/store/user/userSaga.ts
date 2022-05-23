@@ -1,6 +1,7 @@
 import { call, put, takeEvery } from "redux-saga/effects"
-import { editMeApi, getLogin, getUser, logoutUrl } from "../../api/userEndpoint";
+import { editMeApi, getLogin, getUser, logoutUrl } from "../../api/UserEndpoint";
 import { LoginResponse, UserRequest, UserResponse, UserUpdateRequest } from "../../types/User";
+import { clearErrorAction, setErrorAction } from "../error/errorAction";
 import { FETCH_ME, LOGIN, LOGOUT, ME_UPDATE } from "./actionConsts"
 import { fetchMeFailure, fetchMeSuccessfull, loginFailure, loginSuccessfull, logoutFailure, logoutSuccesfull, meUpdateSuccessfull } from "./actionUser";
 
@@ -11,11 +12,13 @@ function* login(args: Params) {
         yield call(() => localStorage.setItem("auth", response.token ? response.token : ''));
         const token = localStorage.getItem("auth");
         if (token) {
+            yield put(clearErrorAction());
             const responseUser: UserResponse = yield call(getUser, token);
             yield put(loginSuccessfull(responseUser.me));
         }
     } catch (error) {
         yield put(loginFailure());
+        yield put(setErrorAction(String(error)));
         localStorage.setItem("auth", '');
     }
 }

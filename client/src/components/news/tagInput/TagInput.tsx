@@ -25,13 +25,14 @@ export function TagInput(props: TagInputProps){
 
     function addTag(){
         props.addTag(newTag);
+        setNewTag('');
     }
     return   <div>
     <ul>
         {props.tags?.map(tag => <li className="tag-input__item" key={tag}><TagRowFilter key={tag} name={tag} onDelete={props.onDelete} /> </li>)}
     </ul>
     <div>
-        <select onChange={onChangeTag} className="tag-input__select">
+        <select onChange={onChangeTag} className="tag-input__select" value={newTag}>
             <option>{''}</option>
             {tags.map(tag => <option key={tag}>{tag}</option>)}
         </select>

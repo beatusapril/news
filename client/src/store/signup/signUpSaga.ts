@@ -5,6 +5,7 @@ import { clearErrorAction, setErrorAction } from "../error/errorAction";
 import { loginSuccessfull } from "../user/actionUser";
 import { SIGNUP } from "./actionConsts";
 import { signUpFailure } from "./actionSignup";
+import {toastr} from 'react-redux-toastr'
 
 type Params = { payload: UserRequest, type: string }
 function* signUp(args: Params) {
@@ -23,6 +24,7 @@ function* signUp(args: Params) {
     } catch (error) {
         yield put(signUpFailure());
         yield put(setErrorAction(String(error)));
+        toastr.error('Error', String(error));
         localStorage.setItem("auth", '');
     }
 }

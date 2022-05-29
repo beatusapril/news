@@ -35,7 +35,7 @@ export function News() {
     useEffect(() => { dispatch(newsFetchAction(filter)) }, [dispatch, filter])
 
     const onPageChanged = (data: PaginationData) => {
-        const { currentPage, totalPages, pageLimit } = data;
+        const { currentPage,  pageLimit } = data;
 
         const offset = (currentPage - 1) * pageLimit;
         if (offset < 0) {

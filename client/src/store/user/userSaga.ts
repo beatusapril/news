@@ -3,6 +3,7 @@ import { editMeApi, getLogin, getUser, logoutUrl } from "../../api/UserEndpoint"
 import { LoginResponse, UserRequest, UserResponse, UserUpdateRequest } from "../../types/User";
 import { clearErrorAction, setErrorAction } from "../error/errorAction";
 import { FETCH_ME, LOGIN, LOGOUT, ME_UPDATE } from "./actionConsts"
+import {toastr} from 'react-redux-toastr'
 import { fetchMeFailure, fetchMeSuccessfull, loginFailure, loginSuccessfull, logoutFailure, logoutSuccesfull, meUpdateSuccessfull } from "./actionUser";
 
 type Params = { payload: UserRequest, type: string }
@@ -19,6 +20,7 @@ function* login(args: Params) {
     } catch (error) {
         yield put(loginFailure());
         yield put(setErrorAction(String(error)));
+        toastr.error('Error', String(error));
         localStorage.setItem("auth", '');
     }
 }
@@ -34,6 +36,7 @@ function* logout() {
         yield put(logoutSuccesfull());
     } catch (error) {
         yield put(logoutFailure());
+        toastr.error('Error', String(error));
     }
 }
 
@@ -49,6 +52,7 @@ function* fetchMe() {
             yield put(fetchMeSuccessfull(responseUser.me));
         }
     } catch (error) {
+        toastr.error('Error', String(error));
         yield put(fetchMeFailure());
     }
 }
@@ -66,7 +70,7 @@ function* meUpdate(args: ParamsMeUpdate) {
             yield put(meUpdateSuccessfull(args.payload));
         }
     } catch (error) {
-        
+        toastr.error('Error', String(error));
     }
 }
 

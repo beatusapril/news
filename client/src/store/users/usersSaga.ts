@@ -4,6 +4,7 @@ import { editRoleApiCall,   getUsersApi} from "../../api/UserEndpoint";
 import {UserInfo } from "../../types/User";
 import { fetchUsersAction, fetchUsersFailure, fetchUsersSuccesfull } from "./usersAction";
 import { EDIT_ROLE, FETCH_USERS } from "./usersActionConsts";
+import {toastr} from 'react-redux-toastr'
 
 function* fetchUsers() {
     try {
@@ -13,6 +14,7 @@ function* fetchUsers() {
             yield put(fetchUsersSuccesfull(response));
         }
     } catch (error) {
+        toastr.error('Error', String(error));
         yield put(fetchUsersFailure());
     }
 }
@@ -30,7 +32,7 @@ function* editRole(args: Params) {
             yield put(fetchUsersAction());
         }
     } catch (error) {
-        
+        toastr.error('Error', String(error));
     }
 }
 

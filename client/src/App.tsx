@@ -15,7 +15,10 @@ import { NewsCreate } from './components/news/newCreate/NewsCreate';
 import { NewsSubscribe } from './components/news/newsSubscribe/NewsSubscribe';
 import { Profile } from './components/profile/Profile';
 import "./normalize.css"
+import 'react-redux-toastr/lib/css/react-redux-toastr.min.css'
 import { Drafts } from './components/news/drafts/Drafts';
+import { NotFound } from './components/notfound/NotFound';
+import ReduxToastr, { ReduxToastrProps, ToastrState } from 'react-redux-toastr';
 
 function App() {
   const user = useSelector<Store, UserInfo | null>(state => getUser(state));
@@ -33,8 +36,19 @@ function App() {
           <Route path='/news-subscribe' element={<NewsSubscribe />}></Route>
           <Route path='/profile' element={<Profile/>}></Route>
           <Route path='/drafts' element={<Drafts/>}></Route>
+          <Route path="*" element={<NotFound/>}></Route>
         </Routes>
       </React.Fragment>
+      <ReduxToastr
+      timeOut={4000}
+      newestOnTop={false}
+      preventDuplicates
+      position="top-left"
+      //getState={(state: ReduxToastrProps) => state.toastr} // This is the default
+      transitionIn="fadeIn"
+      transitionOut="fadeOut"
+      progressBar
+      closeOnToastrClick/>
     </>
   );
 }

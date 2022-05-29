@@ -7,6 +7,7 @@ import { usersReducer } from "./users/usersReducer";
 import { subscribeNewsReducer } from "./subscribeNews/SubscribeNewsReducer";
 import { draftsReducer } from "./drafts/draftsReducer";
 import { errorReducer } from "./error/errorReducer";
+import {reducer as toastrReducer} from 'react-redux-toastr'
 
 export const initialState:Store = {
     user: null,
@@ -24,5 +25,6 @@ export const rootReducer = combineReducers({user: loginReducer,
     news: newsReducer,
     subscribeNews:subscribeNewsReducer,
     drafts: draftsReducer,
-    error: errorReducer
+    error: errorReducer,
+    toastr: toastrReducer
 });

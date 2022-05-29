@@ -3,6 +3,7 @@ import { createNewsApi, deleteNewsApi, getNewsApi, markAsReadApi, updateNewsApi 
 import { NewsCreateRequest, NewsRequest, NewsUpdateRequest, NewsWrapper, ReadNews } from "../../types/News";
 import { newsDeleteSuccessfull, newsFetchFailure, newsFetchSuccessfull, newsMarkAsReadSuccessfull } from "./newsAction";
 import { NEWS_CREATE, NEWS_DELETE, NEWS_FETCH, NEWS_MARK_AS_READ, NEWS_UPDATE } from "./newsActionConsts";
+import {toastr} from 'react-redux-toastr'
 
 type Params = { payload: NewsRequest, type: string }
 function* fetchNews(args: Params) {
@@ -14,6 +15,7 @@ function* fetchNews(args: Params) {
         }
     } catch (error) {
         yield put(newsFetchFailure());
+        toastr.error('Error', String(error));
     }
 }
 
@@ -29,6 +31,7 @@ function* createNews(args: ParamsNewsCreate) {
             yield call(createNewsApi, token, args.payload);
         }
     } catch (error) {
+        toastr.error('Error', String(error));
     }
 }
 
@@ -44,6 +47,7 @@ function* updateNews(args: ParamsNewsUpdate) {
             yield call(updateNewsApi, token, args.payload);
         }
     } catch (error) {
+        toastr.error('Error', String(error));
     }
 }
 
@@ -60,7 +64,7 @@ function* updateReadNews(args: ParamsNewsRead) {
             yield put(newsMarkAsReadSuccessfull(args.payload));
         }
     } catch (error) {
-        console.log(error);
+        toastr.error('Error', String(error));
     }
 }
 
@@ -77,7 +81,7 @@ function* deleteNews(args: ParamsNewsDelete) {
             yield put(newsDeleteSuccessfull(args.payload));
         }
     } catch (error) {
-        console.log(error);
+        toastr.error('Error', String(error));
     }
 }
 

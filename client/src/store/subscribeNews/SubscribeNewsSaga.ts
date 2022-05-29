@@ -3,6 +3,7 @@ import { getNewsApi } from "../../api/NewsEndpoint";
 import { NewsRequest, NewsWrapper } from "../../types/News";
 import { fetchSubscribeNewsFailure, fetchSubscribeNewsSuccessfull } from "./SubscribeNewsAction";
 import { SUBSCRIBE_NEWS_FETCH } from "./SubscribeNewsActionConsts";
+import {toastr} from 'react-redux-toastr'
 
 type Params = { payload: NewsRequest, type: string }
 function* fetchSubscribeNews(args: Params) {
@@ -14,6 +15,7 @@ function* fetchSubscribeNews(args: Params) {
         }
     } catch (error) {
         yield put(fetchSubscribeNewsFailure());
+        toastr.error('Error', String(error));
     }
 }
 

@@ -2,6 +2,7 @@ import { call, put, takeEvery } from "redux-saga/effects";
 import { getTagsApi, saveTagsApi } from "../../api/TagsEndpoint";
 import { TAGS_FETCH, TAGS_SAVE } from "./TagActionConsts";
 import { tagsFetchAction, tagsFetchFailureAction, tagsFetchSuccessfullAction } from "./TagsAction";
+import {toastr} from 'react-redux-toastr'
 
 function* fetchTags() {
     try {
@@ -12,6 +13,7 @@ function* fetchTags() {
         }
     } catch (error) {
         yield put(tagsFetchFailureAction());
+        toastr.error('Error', String(error));
     }
 }
 
@@ -28,6 +30,7 @@ function* saveTags(args: Params) {
             //yield put(tagsFetchAction());
         }
     } catch (error) {
+        toastr.error('Error', String(error));
         yield put(tagsFetchAction());
     }
 }

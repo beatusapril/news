@@ -1,6 +1,6 @@
 import { AnyAction } from "@reduxjs/toolkit";
 import { initialState } from "../rootReducer";
-import { FETCH_USERS, FETCH_USERS_SUCCESSFULL } from "./usersActionConsts";
+import { FETCH_USERS_SUCCESSFULL } from "./usersActionConsts";
 
 
 export function usersReducer(state = initialState.users, action: AnyAction) {

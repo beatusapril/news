@@ -2,7 +2,7 @@ import { AnyAction } from "@reduxjs/toolkit";
 import { initialState } from "../rootReducer";
 import { SIGNUP_FAILURE, SIGNUP_SUCCESSFULL } from "../signup/actionConsts";
 import { FETCH_ME_SUCCESSFULL } from "../users/usersActionConsts";
-import { FETCH_ME_FAILURE, LOGIN_FAILURE, LOGIN_SUCCESSFULL, LOGOUT, LOGOUT_FAILURE, LOGOUT_SUCCESSFULL, ME_UPDATE_SUCCESSFULL } from "./actionConsts";
+import { FETCH_ME_FAILURE, LOGIN_FAILURE, LOGIN_SUCCESSFULL, LOGOUT_FAILURE, LOGOUT_SUCCESSFULL, ME_UPDATE_SUCCESSFULL } from "./actionConsts";
 
 export function loginReducer(state = initialState.user, action: AnyAction) {
     switch (action.type) {

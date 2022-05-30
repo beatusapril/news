@@ -103,7 +103,6 @@ export async function editRoleApiCall(token: string, role: Role, id: number) {
       role: role
     })
   })
-    .then((response) => response.json())
     .catch((error) => {
       throw error;
     });

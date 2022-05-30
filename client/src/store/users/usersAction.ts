@@ -1,6 +1,5 @@
 import { AnyAction } from "@reduxjs/toolkit";
 import { Role, UserInfo } from "../../types/User";
-import { FETCH_ME } from "../user/actionConsts";
 import { EDIT_ROLE, FETCH_USERS, FETCH_USERS_FAILURE, FETCH_USERS_SUCCESSFULL } from "./usersActionConsts";
 
 export function fetchUsersAction(): AnyAction{

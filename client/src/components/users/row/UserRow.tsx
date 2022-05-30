@@ -8,7 +8,8 @@ import "../row/UserRow.css"
 
 export function UserRow(props: UserRowProps) {
     const [role, setRole] = useState<Role | null>(fromNumberRole(props.user.role));
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const [isEdit, setIsEdit] = useState(false);
 
     function onChange(event: any) {
         const selectRole = event?.target.value;
@@ -17,6 +18,16 @@ export function UserRow(props: UserRowProps) {
 
     function saveRole() {
         dispatch(editRoleAction(props.user.id, role))
+        setIsEdit(false);
+    }
+
+    function editRole() {
+        setIsEdit(true);
+    }
+
+    function cancelRole() {
+        setRole(fromNumberRole(props.user.role));
+        setIsEdit(false);
     }
 
     return <div className="user-component">
@@ -26,7 +37,7 @@ export function UserRow(props: UserRowProps) {
                 <span id="name">{props.user.firstName}</span>
             </div>
             <div>
-                <select value={role?.toString()} onChange={ev => onChange(ev)}>
+                <select disabled={!isEdit} value={role?.toString()} onChange={ev => onChange(ev)}>
                     <option>{Role.admin}</option>
                     <option>{Role.writer}</option>
                     <option>{Role.reader}</option>
@@ -49,9 +60,13 @@ export function UserRow(props: UserRowProps) {
                 <span id="login">{props.user.login}</span>
             </div>
             <div className="tag-container">
-                {props.user.tags.map(tag=> <div className="tag-wrapper tag_offset">{tag}</div>)}
+                {props.user.tags.map(tag => <div className="tag-wrapper tag_offset">{tag}</div>)}
             </div>
         </div>
-        <button className="save-role-button btn" onClick={saveRole}>Save role</button>
+        <div className="user-row__btn-panel">
+            {isEdit && <><button className="save-role-button btn" onClick={saveRole}>Save role</button><br /></>}
+            {!isEdit && <><button className="save-role-button btn" onClick={editRole}>Edit role</button><br /></>}
+            {isEdit && <><button className="save-role-button btn" onClick={cancelRole}>Cancel</button><br /></>}
+        </div>
     </div >
 }

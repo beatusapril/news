@@ -9,6 +9,13 @@
 
 .save-role-button{
     height: 40px;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.user-row__btn-panel{
+    display: flex;
+    flex-direction: column;
 }
 
 .tag-container{

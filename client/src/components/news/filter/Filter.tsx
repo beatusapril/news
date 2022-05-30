@@ -36,10 +36,24 @@ export function Filter(props: FilterProps) {
     useEffect(() => {
         dispatch(tagsFetchAction());
     }, [dispatch])
+
+    useEffect(() => {
+        const filterInStorage = localStorage.getItem('filter');
+        if (!filterInStorage) {
+            localStorage.setItem('filter', JSON.stringify(newRequest))
+        } else {
+            const filterParse = JSON.parse(filterInStorage)
+            setNewRequest(filterParse);
+            formik.setValues(filterParse);
+            props.onSubmit(filterParse);
+        }
+    }, []);
+
     const onDelete = (name: string) => {
         if (newRequest.tags !== null && newRequest.tags !== undefined) {
             const newTags = [...newRequest.tags?.filter(tag => tag != name)];
             setNewRequest({ ...newRequest, tags: newTags })
+            localStorage.setItem('filter', JSON.stringify({ ...newRequest, tags: newTags }))
         }
     }
     const addTag = () => {
@@ -50,6 +64,7 @@ export function Filter(props: FilterProps) {
             newRequest.tags?.push(newTag);
             const newTags = [...newRequest.tags];
             setNewRequest({ ...newRequest, tags: newTags })
+            localStorage.setItem('filter', JSON.stringify({ ...newRequest, tags: newTags }))
             setNewTag('');
         }
     }
@@ -83,6 +98,7 @@ export function Filter(props: FilterProps) {
         const tags = newRequest.tags;
         setNewRequest({ ...values, tags: tags });
         props.onSubmit({ ...values, tags: tags });
+        localStorage.setItem('filter', JSON.stringify({ ...values, tags: tags }))
     }
 
     const formik = useFormik({
@@ -103,7 +119,7 @@ export function Filter(props: FilterProps) {
                 </div>
                 <div className="form-group">
                     <label className="only-new-label" htmlFor="onlyNew">Only new</label>
-                    <input  id="onlyNew" type="checkbox" value={String(formik.values.onlyNew)} onChange={formik.handleChange}></input>
+                    <input id="onlyNew" type="checkbox" value={String(formik.values.onlyNew)} checked={formik.values.onlyNew ? formik.values.onlyNew: false} onChange={formik.handleChange}></input>
                 </div>
                 <div>
                     <ul>

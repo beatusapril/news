@@ -27,7 +27,7 @@ export function TagInput(props: TagInputProps){
         props.addTag(newTag);
         setNewTag('');
     }
-    return   <div>
+    return <div>
     <ul>
         {props.tags?.map(tag => <li className="tag-input__item" key={tag}><TagRowFilter key={tag} name={tag} onDelete={props.onDelete} /> </li>)}
     </ul>

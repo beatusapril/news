@@ -87,7 +87,6 @@ export async function updateNewsApi(token: string, req: NewsUpdateRequest) {
         },
         body: JSON.stringify(req)
     })
-        .then((response) => response.json())
         .catch((error) => {
             throw error;
         });

@@ -10,11 +10,12 @@ import createSagaMiddleware from 'redux-saga';
 import rootSaga from './store/rootSaga';
 import { rootReducer } from './store/rootReducer';
 import { BrowserRouter } from 'react-router-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'; 
 
 const sagaMiddleware = createSagaMiddleware();
 
 
-const store = configureStore({ reducer: rootReducer, middleware: [sagaMiddleware] })
+export const store = configureStore({ reducer: rootReducer, middleware: [sagaMiddleware] })
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -22,9 +23,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+    <MuiThemeProvider >
       <Provider store={store}>
         <App />
       </Provider>
+    </MuiThemeProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

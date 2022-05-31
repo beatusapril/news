@@ -72,7 +72,8 @@ export function News() {
         dispatch(newsFetchAction(filter));
     }
 
-    return <>{!user && <NotAuth />}
+    return <>
+    {/* {!user && <NotAuth />} */}
         <Header />
         {user && <div className="wrapper">
             <div className="news-wrapper">

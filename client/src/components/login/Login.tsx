@@ -60,7 +60,7 @@ export function Login() {
                         onChange={formik.handleChange} value={formik.values.password} name="password" id="password" onBlur={formik.handleBlur}></Field>
                     {formik.errors.password && formik.touched.password && <div className="invalid-error">{formik.errors.password}</div>}
                 </div>
-                {error && <div className="invalid-error">{error}</div>} 
+                {/* {error && <div className="invalid-error">{error}</div>}  */}
                 <button type="submit" disabled={!(formik.isValid)} className="btn btn-login">Login</button>
             </form>
         </FormikProvider>

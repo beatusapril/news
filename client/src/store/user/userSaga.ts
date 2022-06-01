@@ -33,6 +33,7 @@ function* logout() {
     try {
         yield call(fetch, logoutUrl, { method: 'post' });
         yield call(() => localStorage.setItem("auth", ''));
+        yield call(() => localStorage.removeItem('filter'));
         yield put(logoutSuccesfull());
     } catch (error) {
         yield put(logoutFailure());

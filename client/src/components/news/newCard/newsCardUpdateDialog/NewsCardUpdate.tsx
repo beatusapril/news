@@ -5,13 +5,10 @@ import { TEXTAREA_CONTENT_ROWS } from "../../../../consts/consts";
 import { newsUpdateAction } from "../../../../store/news/newsAction";
 import { NewState, NewsUpdateRequest } from "../../../../types/News";
 import { fromNewsInfo } from "../../../../utils/Utils";
-import { TagInput } from "../../tagInput/TagInput";
 import { NewsCardDialogUpdateProps } from "./NewsCardUpdateType";
 import '../newsCardUpdate/NewsCardUpdate.css'
 import Dialog from "material-ui/Dialog";
 import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogTitle';
-import { store } from "../../../..";
 import { tagsFetchAction } from "../../../../store/tags/TagsAction";
 import { TagRowFilter } from "../../filter/Filter";
 import { Store } from "../../../../store/Types";

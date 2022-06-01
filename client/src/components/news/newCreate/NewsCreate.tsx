@@ -101,21 +101,21 @@ export function NewsCreate() {
                     <div className="form-group">
                         <label htmlFor="date">Publication Date</label>
                         <input type="datetime-local" className="form-control create-news__date" name="date" id="date" onChange={date => formik.setFieldValue("publicationDate", date.target.value)} onBlur={formik.handleBlur}></input>
-                        {formik.errors.publicationDate && formik.touched.publicationDate && <div className="text-field__message">{formik.errors.header}</div>}
+                        {formik.errors.publicationDate && formik.touched.publicationDate && <div className="invalid-error">{formik.errors.header}</div>}
                     </div>
                     <div className="form-group">
                         <label htmlFor="header">Header</label>
                         <Field className="form-control" label="Header" type="text"
                             name="header" id="header" onChange={formik.handleChange} value={formik.values.header} onBlur={formik.handleBlur}>
                         </Field>
-                        {formik.errors.header && formik.touched.header && <div className="text-field__message">{formik.errors.header}</div>}
+                        {formik.errors.header && formik.touched.header && <div className="invalid-error">{formik.errors.header}</div>}
                     </div>
                     <div className="form-group">
                         <label htmlFor="description">Description</label>
                         <textarea className="form-control" name="description" onChange={formik.handleChange} rows={5} value={formik.values.description} onBlur={formik.handleBlur}>
                             {formik.values.description}
                         </textarea>
-                        {formik.errors.description && formik.touched.description && <div className="text-field__message">{formik.errors.description}</div>}
+                        {formik.errors.description && formik.touched.description && <div className="invalid-error">{formik.errors.description}</div>}
                     </div>
                     <div className="form-group">
                         <label className="text-field__label" htmlFor="state">State</label>
